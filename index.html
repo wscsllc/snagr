@@ -4,116 +4,70 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Snagr</title>
-<meta name="description" content="Live card prices and deals for Pokémon, Magic: The Gathering, Yu-Gi-Oh!, One Piece and Disney Lorcana.">
-<meta name="color-scheme" content="light dark">
-<meta name="theme-color" content="#ECEFF3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0E1115" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Snagr finds cheap trading cards: live prices and deals for Pokémon, Magic, Yu-Gi-Oh!, One Piece, Lorcana and Star Wars: Unlimited, plus one-tap searches across every app.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFFFFF">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Snagr">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='4' y='14' width='56' height='36' rx='4' fill='%23FFE04A'/%3E%3Ccircle cx='4' cy='32' r='6' fill='%2312151A'/%3E%3Ccircle cx='60' cy='32' r='6' fill='%2312151A'/%3E%3Ctext x='32' y='42' font-family='Arial,Helvetica,sans-serif' font-weight='900' font-size='26' text-anchor='middle' fill='%2312151A'%3E%24%3C/text%3E%3C/svg%3E">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 32 32&quot;%3E%3Cpath d=&quot;M4 7.6A3.6 3.6 0 0 1 7.6 4h8.3a3.6 3.6 0 0 1 2.55 1.05l9.4 9.4a3.6 3.6 0 0 1 0 5.1l-8.3 8.3a3.6 3.6 0 0 1-5.1 0l-9.4-9.4A3.6 3.6 0 0 1 4 15.9Z&quot; fill=&quot;%23E8317A&quot;/%3E%3Ccircle cx=&quot;10.6&quot; cy=&quot;10.6&quot; r=&quot;2.7&quot; fill=&quot;%23fff&quot;/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAG70lEQVR4nOzda4hUZRzH8f+Zy87s7H009+KNcPFG2Q2ysgwqEjKSqFCM8IKlJb2JEvJVvYjeVegLr+h2MYmKCCJEUlHTyKLSSLxkZrLqrOvO3mZ3Z/ecmc60QkX7b3d0z8zz/5/fh32jPgO++PKcM+c8z7OhS7etJYChhAiAgTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAhTiAJTWOyP0zSu64MTxzfLC+OlBfTaMt297jJDrsM4n+n86l9x7PtHWT/1jifnVoaGpd5etPhqfVU6Fku9Nd63b1fnKEfCZAokQfuz2+Y3Uhy3BZ5ZHKtQuqNyyzSkvITyTFUf7ivKrXnrCCxfk/R2Y3xt9bFYiXk2+IiSO26O6yZXOpqEJTamuaVgbiZeQPMuIIzRxfseZRMkBoQjy+baVP5g8ZcVS8Mp+MEZw0xifzh4A4wjdNKLllMpnEJ/OHgDgic2eQea7OHzdUkl4yZg4yUm7+aHpOcR8C4gg21JCpgvU1ivuQEMekMWSwXB/bdfYh7AlpvrKptH28mdI2ecmd21TOHzrfytq/tfTsPDxw9A/710Tuz8FAaFq9+5Wn7Jl7A3VV5IHB60vb0s2Zy52khYAXb7U/vDHywdm+gdSmPakPDpGT+e+/WtFw+aoHY4vnUMiTKdO5mNTUh6rLSvrAidbH3069e3DIMuivdLre2dW6cJ07qZAHlN2f6orj4IlMomPYYc7Zy+lvTpM3NPWhJ47+w6d7P/1uhINT2/bbpy6SN9T0oSeO1I5DeYy2nZ6PvyXP6OhDTxz2yfxmgoGfz5OXFPShJA7nQjLfZZ726YR7f0pekt6HkjiuZRrIZu1Tl8hjovtQEkd4av6rSi0rPLWOvCe3DyVxBCePpWg4v4+4r2zy/Mg1E9qHlhvSgBVurM3rEwVewi6xDz3fVmJPz8ljtGXlHqIXlrg+9MQRnTcr+vDNIxxctuS+8KyJVHCy+lD1+Lzy1QWBGyqGHRZqrC1//iEqEkF9qIrDqiod+9lL7hTyP2Nii+8Z8/4LFA5S8UjpQ9tiHytWUvXmQvcnNL2BIn+vVrFKS9zrSM3G5RUvz//n3xfL1T7qRn8L+CjStp7jX7LZTKLTaekMNlQHxg5/uSk8p6Ujt/7jUjsZSfUyQcsK1FW5E4aZZbiC46pMnj+UryE1n8l9II7iM7YPxGGEXB9bV1gVUTIJ4jBFsKGmZv0SMgniMEh41qTSp2aTMRCHWSrcR7clpmwmQhxmsapjkbsayQwC4sh29ZGfROZOJzMIiCNzxV9ngIbdB/9mEBDHgGcbTMxkzoFBAuJIf32S/MQq1OLFYUmIY88vma5e8g3HmKO0JdyQ9vb3NB0g38i0dpEZZHyVTX142D6TIH8YOObtVryRE/KcI20nVzdlkinygd7PvycziHkIlmnpbFu+WX0f7t2305wkM0h6Quqca21bsUV3H11vfUnGEPb43Dl7WfH80bH2I+f3VjKGvHcrg/NHtr2HdOne8FXfrmNkEpEv3tz548qyTZrmj9T2/akt+8gwUt/K5uYPLdcXt4zu9bvJPIJf2evow9gySPp6Dul9mFwGKVjsI7cPw8sgHSvBJPZhfhmk58A4UX2IKIM0rSGV0oeUMkjZAmPz+xBUBulbfW5yH7LKIJVbE8zsQ1wZpHXfiml9SCyDFG9qMqcPoWWQ7h1vg304Rd32IrcMUr8d0u0juXRjsfoQXQb5Ya+s05wsSh/SyyCfbKQufB8KyiD/7LIvZB86yiBfHcFQmD7UlEF+O5/D6z40lUE+PLzFuz6UlUH+PNnHiz70lUG+PfZpdPtQWQb5+Uyw0epDaxnk8wPjrr8PxWUQThO8nj50l0GIgwb7cN/fJjry+lRq817dZRDiGOScv9K6aH3/0XMjGZwdsNvX7OzeuIe0E/DLeAonYEUfubX82QeCE+NDD7AzvV/8mNq6z7lgyhEankIcQyi5c4pbSXh6Q3BcpVUdc687TnNbev+Jvt3HfHUoqinHbBul/8gZ94d8D3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EAC3EA608AAAD//6JcbSQAAAAGSURBVAMANLLF1DjCGyAAAAAASUVORK5CYII=">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800&display=swap">
 <style>
-/* Layout: a pocket price gun. Game switch pinned on top, sticker-tagged rows in the middle, tab bar under the thumb. */
+/* Layout: a clean white price list. Game pills on top, one column of cards with the price on the right, tabs under the thumb. */
 :root {
-  --bg: #ECEFF3;          /* binder-sleeve grey */
-  --surface: #FFFFFF;
-  --surface-2: #F3F5F8;
-  --ink: #12151A;
-  --ink-2: #4D5765;
-  --ink-3: #737D8B;
-  --line: #D4DAE2;
-  --accent: #2443D0;      /* links, focus */
-  --sticker: #FFE04A;     /* price-gun label */
-  --sticker-ink: #1C1600;
-  --hot: #FF9A4D;         /* fluorescent orange sale sticker */
-  --steal: #4AE38D;       /* fluorescent green sale sticker */
-  --deal-ink: #0B1A10;
-  --good: #11784A;
-  --bad: #B42330;
-  --warn: #8A5600;
-  --holo: linear-gradient(118deg, #FFF1BD 0%, #CDF5FF 28%, #E6D4FF 55%, #FFD6E4 80%, #FFF1BD 100%);
-  --holo-ink: #12151A;
-  --holo-ink-2: rgba(18, 21, 26, .74);
-  --holo-warn: #6B3F00;
-  --scrim: rgba(6, 8, 12, .5);
-  --shadow: 0 1px 0 rgba(18, 21, 26, .04), 0 8px 22px -12px rgba(18, 21, 26, .28);
-  --g-pokemon: #E2AF00;
-  --g-mtg: #C0571A;
-  --g-yugioh: #7A3EB3;
-  --g-onepiece: #CC2437;
-  --g-lorcana: #2A61D3;
-  --f-display: "Big Shoulders Display", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
-  --f-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  --r: 12px;
+  --bg: #FFFFFF;
+  --ink: #141317;
+  --ink-2: #5D5966;
+  --ink-3: #8C8895;
+  --line: #ECEAF0;
+  --soft: #F6F5F8;
+  --pink: #E8317A;       /* brand mark, hearts */
+  --pink-soft: #FFF0F6;
+  --pink-line: #F9CFE1;
+  --green: #0E7A52;
+  --green-soft: #E3F5EC;
+  --red: #BD2F49;
+  --f: "M PLUS Rounded 1c", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --tabbar-h: 62px;
-  --notch: radial-gradient(circle 4px at 0 50%, #0000 94%, #000 100%) left / 50.5% 100% no-repeat,
-           radial-gradient(circle 4px at 100% 50%, #0000 94%, #000 100%) right / 50.5% 100% no-repeat;
   color-scheme: light;
 }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #0E1115; --surface: #161A20; --surface-2: #1D222A; --ink: #EDF0F4; --ink-2: #A9B2BF; --ink-3: #7F8998;
-    --line: #2A313B; --accent: #91A6FF; --good: #52D28F; --bad: #FF7F88; --warn: #F1B74C;
-    --holo: linear-gradient(118deg, #EADCA4 0%, #ACDDE9 28%, #CAB8EE 55%, #ECBACB 80%, #EADCA4 100%);
-    --scrim: rgba(0, 0, 0, .62);
-    --shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 12px 26px -14px rgba(0, 0, 0, .85);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #0E1115; --surface: #161A20; --surface-2: #1D222A; --ink: #EDF0F4; --ink-2: #A9B2BF; --ink-3: #7F8998;
-  --line: #2A313B; --accent: #91A6FF; --good: #52D28F; --bad: #FF7F88; --warn: #F1B74C;
-  --holo: linear-gradient(118deg, #EADCA4 0%, #ACDDE9 28%, #CAB8EE 55%, #ECBACB 80%, #EADCA4 100%);
-  --scrim: rgba(0, 0, 0, .62);
-  --shadow: 0 1px 0 rgba(0, 0, 0, .3), 0 12px 26px -14px rgba(0, 0, 0, .85);
-  color-scheme: dark;
-}
-
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; background: var(--bg); }
 html.locked, html.locked body { overflow: hidden; }
 body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font: 400 15px/1.45 var(--f-body); -webkit-font-smoothing: antialiased;
+  margin: 0; background: var(--bg); color: var(--ink); font: 500 16px/1.5 var(--f); -webkit-font-smoothing: antialiased;
   min-height: 100vh; min-height: 100dvh;
-  padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px) + 16px);
+  padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px) + 18px);
 }
 img { max-width: 100%; }
 [hidden] { display: none !important; }
 button { font: inherit; color: inherit; }
-a { color: var(--accent); }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+a { color: inherit; }
+b, strong { font-weight: 800; }
+:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .wrap {
-  max-width: 760px; margin: 0 auto;
+  max-width: 640px; margin: 0 auto;
   padding-left: max(16px, env(safe-area-inset-left, 0px));
   padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 
 /* Header */
 .top { position: sticky; top: 0; z-index: 30; background: var(--bg); padding-top: env(safe-area-inset-top, 0px); border-bottom: 1px solid var(--line); }
-@supports (background: color-mix(in srgb, red 50%, blue)) and ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .top { background: color-mix(in srgb, var(--bg) 86%, transparent); -webkit-backdrop-filter: saturate(1.5) blur(14px); backdrop-filter: saturate(1.5) blur(14px); }
-}
-.top-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 10px 8px; }
-.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
-.brand-tag {
-  display: inline-grid; place-items: center; min-width: 36px; height: 26px; padding: 0 8px;
-  background: var(--sticker); color: var(--sticker-ink); font: 800 19px/1 var(--f-display);
-  border-radius: 3px; -webkit-mask: var(--notch); mask: var(--notch);
-}
-.brand-word { font: 800 27px/1 var(--f-display); letter-spacing: .01em; text-transform: uppercase; }
-.brand-sub { font: 500 11px/1 var(--f-mono); color: var(--ink-3); letter-spacing: .1em; align-self: flex-start; margin-top: 3px; }
-.icon-btn {
-  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface);
-  display: grid; place-items: center; cursor: pointer; color: var(--ink-2); font: 700 16px/1 var(--f-body);
+.top-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px 8px; }
+.logo { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); }
+.logo svg { width: 28px; height: 28px; flex: none; }
+.logo span { font: 800 27px/1 var(--f); letter-spacing: -.035em; }
+.help {
+  width: 40px; height: 40px; border-radius: 50%; border: 1.5px solid var(--line); background: var(--bg);
+  display: grid; place-items: center; cursor: pointer; color: var(--ink-2); font: 800 16px/1 var(--f);
 }
 .games {
-  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-block: 2px 12px;
+  display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding-block: 4px 12px;
   margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
   margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
   padding-left: max(16px, env(safe-area-inset-left, 0px));
@@ -121,285 +75,208 @@ a { color: var(--accent); }
 }
 .games::-webkit-scrollbar { display: none; }
 .game {
-  flex: none; display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 15px;
-  border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink);
-  font: 600 14px/1 var(--f-body); cursor: pointer;
+  flex: none; height: 38px; padding: 0 15px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg);
+  color: var(--ink); font: 700 14px/1 var(--f); cursor: pointer; white-space: nowrap;
 }
-.game .dot { width: 10px; height: 10px; border-radius: 3px; background: var(--gc); }
-.game[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.game[aria-selected="true"] { background: var(--ink); border-color: var(--ink); color: #FFFFFF; }
 
 /* Sections */
-.view { padding-block: 2px 24px; }
-.sec-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; margin: 20px 0 6px; }
-.sec-head > div { min-width: 0; }
-.sec-title { margin: 0; font: 800 34px/.95 var(--f-display); text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; }
-.sec-hint { margin: 7px 0 0; color: var(--ink-2); font-size: 14px; max-width: 60ch; }
-.stamp { margin: 10px 0; color: var(--ink-3); font: 500 11.5px/1.4 var(--f-mono); letter-spacing: .02em; }
-.fine { color: var(--ink-3); font-size: 12.5px; line-height: 1.45; margin: 14px 0 0; max-width: 64ch; }
+.view { padding-block: 6px 24px; }
+.head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 20px 0 4px; }
+.head h1 { margin: 0; font: 800 26px/1.15 var(--f); letter-spacing: -.02em; text-wrap: balance; }
+.hint { margin: 0 0 14px; color: var(--ink-2); font-size: 15px; max-width: 56ch; }
+.fine { color: var(--ink-3); font-size: 13px; line-height: 1.55; margin: 18px 0 0; max-width: 60ch; }
 
 .btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 6px; height: 40px; padding: 0 15px;
-  border-radius: 10px; border: 1px solid transparent; background: var(--ink); color: var(--bg);
-  font: 600 14px/1 var(--f-body); cursor: pointer; white-space: nowrap; text-decoration: none;
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 46px; padding: 0 20px;
+  border-radius: 999px; border: 0; background: var(--ink); color: #FFFFFF; font: 700 15px/1 var(--f);
+  cursor: pointer; white-space: nowrap; text-decoration: none;
 }
 .btn:disabled { opacity: .5; cursor: default; }
-.btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
-.btn.wide { width: 100%; }
-.link { background: none; border: 0; padding: 0; color: var(--accent); font: 600 13.5px/1.2 var(--f-body); cursor: pointer; text-decoration: none; }
+.btn.ghost { background: var(--bg); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); }
+.btn.small { min-height: 36px; padding: 0 14px; font-size: 13.5px; }
+.btn.heart { background: var(--bg); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--pink-line); }
+.btn.heart svg { color: var(--pink); }
+.btn.heart[aria-pressed="true"] { background: var(--pink); color: #FFFFFF; box-shadow: none; }
+.btn.heart[aria-pressed="true"] svg { color: #FFFFFF; }
+.textlink { background: none; border: 0; padding: 0; color: var(--ink); font: 700 14.5px/1.3 var(--f); cursor: pointer; text-decoration: underline; text-decoration-color: var(--pink-line); text-decoration-thickness: 2px; text-underline-offset: 4px; }
 
-/* Rows */
-.list { display: grid; gap: 8px; }
+/* Lists */
+.list { display: grid; border-top: 1px solid var(--line); }
 .row {
-  display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 12px; align-items: center;
-  width: 100%; padding: 10px 12px; background: var(--surface); border: 1px solid var(--line);
-  border-radius: var(--r); text-align: left; cursor: pointer; color: var(--ink);
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 14px; align-items: center;
+  width: 100%; padding: 12px 2px; background: none; border: 0; border-bottom: 1px solid var(--line);
+  text-align: left; cursor: pointer; color: var(--ink); text-decoration: none;
 }
-.row:hover { border-color: var(--ink-3); }
-.row-main { display: grid; gap: 2px; min-width: 0; }
-.row-name { font-weight: 600; font-size: 15.5px; line-height: 1.25; overflow-wrap: anywhere; }
-.row-sub { color: var(--ink-2); font-size: 13px; line-height: 1.3; overflow-wrap: anywhere; }
-.row-note { color: var(--ink-3); font-size: 12.5px; line-height: 1.35; }
-.row-note .down { color: var(--good); font-weight: 600; }
-.row-note .up { color: var(--bad); font-weight: 600; }
-.row-price { display: grid; justify-items: end; gap: 6px; }
+.row:hover, .row:active { background: var(--soft); }
+.row-main { display: grid; gap: 1px; min-width: 0; }
+.name { font-weight: 700; font-size: 16px; line-height: 1.3; overflow-wrap: anywhere; }
+.sub { color: var(--ink-2); font-size: 13.5px; line-height: 1.35; overflow-wrap: anywhere; }
+.row-price { display: grid; justify-items: end; gap: 3px; text-align: right; }
+.price { font-weight: 800; font-size: 17px; line-height: 1.1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.price small { font-weight: 700; font-size: 12px; color: var(--ink-3); margin-right: 3px; }
+.save { display: inline-block; font-size: 12.5px; font-weight: 800; color: var(--green); background: var(--green-soft); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.muted { color: var(--ink-3); font-size: 12.5px; font-weight: 700; white-space: nowrap; }
 
-.thumb { position: relative; display: block; width: 48px; aspect-ratio: 63 / 88; max-width: 100%; border-radius: 4px; overflow: hidden; background: var(--surface-2); flex: none; }
-.thumb.sm { width: 40px; }
-.thumb.lg { width: min(32vw, 144px); border-radius: 8px; box-shadow: var(--shadow); }
+.thumb { position: relative; display: block; width: 48px; aspect-ratio: 63 / 88; max-width: 100%; border-radius: 6px; overflow: hidden; background: var(--soft); flex: none; }
+.thumb.sm { width: 40px; border-radius: 5px; }
+.thumb.lg { width: min(34vw, 150px); border-radius: 10px; box-shadow: 0 10px 24px -14px rgba(20, 19, 23, .45); }
 .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.tile {
-  position: absolute; inset: 0; display: grid; place-items: center; padding: 5px;
-  background: var(--gc); background-image: linear-gradient(155deg, rgba(255, 255, 255, .3), rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, .22));
-  color: #FFFFFF; font: 500 8.5px/1.15 var(--f-mono); text-align: center; letter-spacing: .02em; word-break: break-all;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, .35);
-}
-.tile::before { content: ""; position: absolute; inset: 3px; border: 1px solid rgba(255, 255, 255, .5); border-radius: 3px; }
-.t-pokemon .tile { color: #2A2000; text-shadow: none; }
-.t-pokemon .tile::before { border-color: rgba(42, 32, 0, .35); }
-.thumb.lg .tile { font-size: 13px; padding: 12px; }
-
-.tag {
-  display: inline-flex; align-items: baseline; gap: 4px; padding: 4px 12px 3px;
-  background: var(--sticker); color: var(--sticker-ink); font: 800 21px/1 var(--f-display);
-  letter-spacing: .01em; border-radius: 3px; font-variant-numeric: tabular-nums; white-space: nowrap;
-  -webkit-mask: var(--notch); mask: var(--notch);
-}
-.tag small { font: 600 9.5px/1 var(--f-body); text-transform: uppercase; letter-spacing: .07em; }
-.tag.mute { background: var(--surface-2); color: var(--ink-3); font-size: 15px; }
-.pct {
-  display: inline-block; padding: 4px 7px; border-radius: 3px; white-space: nowrap;
-  font: 700 12px/1 var(--f-body); color: var(--deal-ink); background: var(--steal);
-}
-.pct.great { background: var(--hot); }
-.pct.good { background: transparent; color: var(--good); box-shadow: inset 0 0 0 1.5px currentColor; }
-.pct.fair { background: transparent; color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
-.pct.high { background: transparent; color: var(--bad); box-shadow: inset 0 0 0 1.5px currentColor; }
+.tile { position: absolute; inset: 0; display: grid; place-items: center; padding: 5px; text-align: center; color: var(--ink-3); font: 800 9px/1.15 var(--f); word-break: break-word; border: 1.5px solid var(--line); border-radius: inherit; }
+.thumb.lg .tile { font-size: 14px; padding: 12px; }
 
 /* Loading and notes */
+.loading-text { margin: 4px 0 12px; color: var(--ink-2); font-weight: 700; font-size: 15px; }
 .sk { cursor: default; }
-.sk .thumb, .sk-line, .sk-tag { background: var(--surface-2); }
+.sk:hover { background: none; }
+.sk .thumb, .sk-line, .sk-price { background: var(--soft); }
 .sk-line { display: block; height: 12px; border-radius: 6px; }
 .sk-line + .sk-line { margin-top: 8px; }
-.sk-line.short { width: 35%; }
-.sk-tag { display: block; width: 66px; height: 27px; border-radius: 4px; }
+.sk-line.short { width: 40%; }
+.sk-price { display: block; width: 58px; height: 18px; border-radius: 6px; }
 @media (prefers-reduced-motion: no-preference) {
-  .sk .thumb, .sk-line, .sk-tag { background: linear-gradient(90deg, var(--surface-2) 0%, var(--line) 50%, var(--surface-2) 100%); background-size: 200% 100%; animation: shimmer 1.2s linear infinite; }
+  .sk .thumb, .sk-line, .sk-price { background: linear-gradient(90deg, var(--soft) 0%, var(--line) 50%, var(--soft) 100%); background-size: 200% 100%; animation: shimmer 1.3s linear infinite; }
 }
 @keyframes shimmer { to { background-position: -200% 0; } }
-.loading-note { margin: 10px 0; color: var(--ink-2); font-size: 13.5px; }
-.note { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; display: grid; gap: 12px; justify-items: start; }
-.note p { margin: 0; max-width: 62ch; }
-.note.err { border-color: var(--bad); }
+.note { display: grid; gap: 12px; justify-items: start; padding: 16px; border-radius: 16px; background: var(--soft); }
+.note p { margin: 0; max-width: 58ch; }
+.note.err { background: #FFF2F4; }
+.note.err p { color: #7A1E30; }
 
-/* Hunt */
-.search { display: flex; gap: 8px; margin: 16px 0 6px; }
+/* Search */
+.search { display: flex; gap: 8px; margin: 18px 0 6px; }
 .search-field { position: relative; flex: 1; min-width: 0; }
-.search-field svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
+.search-field > svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--ink-3); pointer-events: none; }
 .search input {
-  width: 100%; height: 50px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface);
-  color: var(--ink); padding: 0 14px 0 44px; font: 500 16px/1 var(--f-body); -webkit-appearance: none; appearance: none;
+  width: 100%; height: 50px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--soft);
+  color: var(--ink); padding: 0 46px; font: 700 16px/1 var(--f); -webkit-appearance: none; appearance: none;
 }
-.search input::placeholder { color: var(--ink-3); }
-.search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(36, 67, 208, .2); }
-.search .btn { height: 50px; padding: 0 18px; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
-.chip {
-  height: 36px; padding: 0 14px; border-radius: 999px; border: 1px dashed var(--ink-3); background: transparent;
-  color: var(--ink); font: 500 14px/1 var(--f-body); cursor: pointer;
+.search input::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; }
+.search input::placeholder { color: var(--ink-3); font-weight: 500; }
+.search input:focus { outline: none; border-color: var(--ink); background: var(--bg); }
+.clear { position: absolute; right: 7px; top: 50%; transform: translateY(-50%); width: 36px; height: 36px; border-radius: 50%; border: 0; background: transparent; color: var(--ink-3); cursor: pointer; display: grid; place-items: center; }
+.search .btn { min-height: 50px; }
+.label { margin: 18px 0 10px; color: var(--ink-2); font-weight: 700; font-size: 14.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { min-height: 40px; padding: 0 15px; border-radius: 999px; border: 0; background: var(--soft); color: var(--ink); font: 700 14.5px/1 var(--f); cursor: pointer; }
+.chip:hover { background: var(--line); }
+
+/* Store buttons */
+.apps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.app {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 50px; padding: 8px 14px;
+  border-radius: 14px; background: var(--soft); color: var(--ink); text-decoration: none; font-weight: 700; font-size: 14.5px; line-height: 1.2;
 }
-.chip:hover { border-style: solid; }
-.how { margin-top: 20px; display: grid; gap: 10px; }
-.how h2 { margin: 0; font: 800 21px/1 var(--f-display); text-transform: uppercase; letter-spacing: .01em; }
-.how ol { margin: 0; padding-left: 20px; color: var(--ink-2); display: grid; gap: 6px; max-width: 60ch; }
+.app:hover { background: var(--line); }
+.app b { font-size: 14.5px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* Tab bar */
 .tabbar {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; background: var(--surface); border-top: 1px solid var(--line);
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 35; background: var(--bg); border-top: 1px solid var(--line);
   padding-bottom: env(safe-area-inset-bottom, 0px);
   padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px);
 }
-.tabbar-in { max-width: 760px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
-.tab {
-  position: relative; height: var(--tabbar-h); display: grid; place-items: center; align-content: center; gap: 4px;
-  background: none; border: 0; cursor: pointer; color: var(--ink-3); font: 600 12px/1 var(--f-body);
-}
+.tabbar-in { max-width: 640px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
+.tab { position: relative; height: var(--tabbar-h); display: grid; place-items: center; align-content: center; gap: 3px; background: none; border: 0; cursor: pointer; color: var(--ink-3); font: 700 12px/1 var(--f); }
 .tab svg { width: 24px; height: 24px; }
 .tab[aria-selected="true"] { color: var(--ink); }
-.tab[aria-selected="true"]::before { content: ""; position: absolute; top: 0; left: 32%; right: 32%; height: 3px; border-radius: 0 0 3px 3px; background: var(--ink); }
-.badge {
-  position: absolute; top: 7px; left: calc(50% + 7px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
-  background: var(--sticker); color: var(--sticker-ink); font: 700 11px/18px var(--f-body); text-align: center;
-}
-.badge.mute { background: var(--surface-2); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
+.tab[aria-selected="true"] svg { color: var(--pink); }
+.badge { position: absolute; top: 7px; left: calc(50% + 8px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--pink); color: #FFFFFF; font: 800 11px/18px var(--f); text-align: center; }
+.badge.mute { background: var(--soft); color: var(--ink-2); box-shadow: inset 0 0 0 1px var(--line); }
 
 /* Sheet */
 .sheet { position: fixed; inset: 0; z-index: 60; }
-.sheet-backdrop { position: absolute; inset: 0; background: var(--scrim); }
+.sheet-backdrop { position: absolute; inset: 0; background: rgba(20, 19, 23, .4); }
 .sheet-panel {
-  position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 760px;
-  max-height: calc(100% - 28px - env(safe-area-inset-top, 0px)); overflow-y: auto; overscroll-behavior: contain;
-  background: var(--bg); border-radius: 18px 18px 0 0; box-shadow: 0 -12px 40px rgba(0, 0, 0, .28);
-  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 640px;
+  max-height: calc(100% - 24px - env(safe-area-inset-top, 0px)); overflow-y: auto; overscroll-behavior: contain;
+  background: var(--bg); border-radius: 22px 22px 0 0; box-shadow: 0 -10px 40px rgba(20, 19, 23, .2);
+  padding-bottom: calc(26px + env(safe-area-inset-bottom, 0px));
 }
 @media (prefers-reduced-motion: no-preference) {
   .sheet-backdrop { animation: fade .2s ease-out; }
   .sheet-panel { animation: rise .28s cubic-bezier(.2, .8, .2, 1); }
 }
 @keyframes fade { from { opacity: 0; } }
-@keyframes rise { from { transform: translateY(64px); } }
+@keyframes rise { from { transform: translateY(60px); } }
 .sheet-head {
   position: sticky; top: 0; z-index: 2; display: flex; align-items: center; gap: 12px; padding-block: 12px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
-  background: var(--bg); border-bottom: 1px solid var(--line); border-radius: 18px 18px 0 0;
+  background: var(--bg); border-bottom: 1px solid var(--line); border-radius: 22px 22px 0 0;
 }
-.sheet-titles { min-width: 0; flex: 1; }
-.sheet-eyebrow { font: 600 11px/1.2 var(--f-body); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
-.sheet-title { margin: 3px 0 0; font: 700 16px/1.2 var(--f-body); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.close { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); cursor: pointer; display: grid; place-items: center; color: var(--ink); flex: none; }
+.sheet-title { margin: 0; flex: 1; min-width: 0; font: 800 17px/1.25 var(--f); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.close { width: 40px; height: 40px; border-radius: 50%; border: 0; background: var(--soft); cursor: pointer; display: grid; place-items: center; color: var(--ink); flex: none; }
 .sheet-body {
-  display: grid; gap: 18px; padding-block: 16px 0;
+  display: grid; gap: 22px; padding-block: 18px 0;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
 }
 .sheet-body > * { min-width: 0; }
+.sheet-body h3 { margin: 0 0 10px; font: 800 18px/1.25 var(--f); }
 
 /* Card detail */
 .d-hero { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 16px; align-items: end; }
-.d-name { margin: 0; font: 800 clamp(26px, 7.4vw, 38px)/.95 var(--f-display); text-transform: uppercase; letter-spacing: .005em; text-wrap: balance; overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
-.d-sub { margin: 7px 0 10px; color: var(--ink-2); font-size: 14px; }
-@media (max-width: 340px) { .d-hero { grid-template-columns: 1fr; } .thumb.lg { width: 132px; } }
-
-.holo {
-  position: relative; overflow: hidden; border-radius: 16px; padding: 16px 16px 18px;
-  background: var(--holo); background-size: 220% 220%; color: var(--holo-ink);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .55), var(--shadow); display: grid; gap: 3px; justify-items: start;
-}
-.holo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(112deg, rgba(255, 255, 255, 0) 0 14px, rgba(255, 255, 255, .22) 14px 15px); }
-.holo > * { position: relative; z-index: 1; }
-@media (prefers-reduced-motion: no-preference) { .holo { animation: sheen 10s ease-in-out infinite alternate; } }
-@keyframes sheen { from { background-position: 0% 40%; } to { background-position: 100% 60%; } }
-.holo-top { display: flex; gap: 8px; align-items: center; justify-content: space-between; width: 100%; }
-.eyebrow { font: 700 11px/1 var(--f-body); letter-spacing: .14em; text-transform: uppercase; color: var(--holo-ink-2); }
-.big { margin-top: 6px; font: 800 54px/1 var(--f-display); letter-spacing: .005em; font-variant-numeric: tabular-nums; }
-.h-l1 { margin: 2px 0 0; font-weight: 700; font-size: 15px; }
-.h-l2 { margin: 0; font-size: 14px; color: var(--holo-ink-2); }
-.h-l3 { margin: 6px 0 0; font-size: 14px; font-weight: 600; }
-.h-warn { margin: 6px 0 0; font-size: 13px; color: var(--holo-warn); max-width: 52ch; }
-.cta {
-  margin-top: 12px; display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px;
-  border-radius: 11px; background: var(--holo-ink); color: #FFFFFF; text-decoration: none; font: 600 15px/1 var(--f-body);
-}
-
-.block { display: grid; gap: 10px; }
-.block-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.block h3 { margin: 0; font: 800 23px/1 var(--f-display); text-transform: uppercase; letter-spacing: .01em; }
-.block > .fine { margin: 0; }
-.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); }
-.seg button { height: 34px; padding: 0 12px; border: 0; background: none; cursor: pointer; font: 600 13px/1 var(--f-body); color: var(--ink-2); }
-.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
-.stores { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
-.store {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 11px 12px; border-radius: 10px;
-  background: var(--surface); border: 1px solid var(--line); text-decoration: none; color: var(--ink); font-size: 14px;
-}
-.store b { font: 800 20px/1 var(--f-display); font-variant-numeric: tabular-nums; }
-.store.best { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
-
-.prs { display: grid; gap: 8px; }
-.pr { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; display: grid; gap: 10px; }
-.pr.focus { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
-.pr-head { display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: center; }
-.pr-title { font-weight: 600; font-size: 15px; line-height: 1.25; overflow-wrap: anywhere; }
-.pr-meta { margin-top: 3px; color: var(--ink-2); font: 500 11.5px/1.4 var(--f-mono); overflow-wrap: anywhere; }
-.vr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; padding-top: 10px; border-top: 1px dashed var(--line); }
-.vr-label { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-weight: 600; font-size: 14px; }
-.offers { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 7px; }
-.offer {
-  display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 9px; border-radius: 8px; background: var(--surface-2);
-  border: 1px solid transparent; color: var(--ink); text-decoration: none; font-size: 12.5px; line-height: 1;
-}
-.offer .st { color: var(--ink-2); }
-.offer b { font: 800 16px/1 var(--f-display); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
-.offer.best { border-color: var(--ink); background: var(--surface); }
-.offer.old { opacity: .72; }
-.muted { color: var(--ink-3); font-size: 13px; }
-.flag { font: 600 11.5px/1.2 var(--f-body); color: var(--warn); }
-.watch-btn {
-  width: 44px; height: 44px; border-radius: 11px; border: 1px solid var(--line); background: var(--surface);
-  display: grid; place-items: center; color: var(--ink-2); cursor: pointer; flex: none;
-}
-.watch-btn[aria-pressed="true"] { background: var(--sticker); color: var(--sticker-ink); border-color: transparent; }
-.watch-btn:disabled { opacity: .35; cursor: default; }
-.wf { display: grid; gap: 8px; padding: 12px; border-radius: 10px; background: var(--surface-2); }
-.wf label { font-weight: 600; font-size: 13.5px; }
+.d-name { margin: 0; font: 800 clamp(23px, 6.4vw, 30px)/1.12 var(--f); letter-spacing: -.02em; text-wrap: balance; overflow-wrap: break-word; }
+.d-sub { margin: 6px 0 10px; color: var(--ink-2); font-size: 14.5px; }
+@media (max-width: 340px) { .d-hero { grid-template-columns: 1fr; } }
+.best { display: grid; gap: 2px; justify-items: start; padding: 18px; border-radius: 20px; background: var(--pink-soft); }
+.best-label { font-weight: 700; font-size: 14px; color: var(--ink-2); }
+.big { font: 800 46px/1.08 var(--f); letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+.where { margin: 2px 0 0; font-weight: 700; }
+.ver { margin: 0; color: var(--ink-2); font-size: 14.5px; }
+.saving { margin: 8px 0 0; font-weight: 800; color: var(--green); }
+.pricey { margin: 8px 0 0; font-weight: 700; color: var(--red); }
+.warn { margin: 6px 0 0; font-size: 13.5px; color: var(--ink-2); max-width: 50ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.wf { width: 100%; display: grid; gap: 10px; margin-top: 14px; padding: 14px; border-radius: 16px; background: var(--bg); box-shadow: inset 0 0 0 1.5px var(--line); }
+.versions .wf { margin: 4px 0 12px; }
+.wf label { font-weight: 800; font-size: 15px; }
 .wf .fine { margin: 0; }
 .wf-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.money-in { position: relative; flex: 1 1 110px; max-width: 170px; }
-.money-in span { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--ink-2); font-weight: 600; }
-.money-in input {
-  width: 100%; height: 42px; border-radius: 10px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink);
-  padding: 0 10px 0 26px; font: 600 16px/1 var(--f-body);
-}
-.money-in input:focus { outline: none; border-color: var(--accent); }
+.money-in { position: relative; flex: 1 1 110px; max-width: 160px; }
+.money-in span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--ink-2); font-weight: 800; }
+.money-in input { width: 100%; height: 46px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); padding: 0 12px 0 28px; font: 800 17px/1 var(--f); }
+.money-in input:focus { outline: none; border-color: var(--ink); }
 
-/* Watchlist */
-.wrow {
-  display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; column-gap: 12px; row-gap: 10px; align-items: start;
-  padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
-}
-.wrow.hit { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
-.wrow-extra { grid-column: 2 / -1; min-width: 0; }
-.wedit { display: grid; gap: 6px; }
-.wedit label { font-weight: 600; font-size: 13px; }
-.wactions { display: flex; flex-wrap: wrap; column-gap: 18px; row-gap: 10px; }
+.versions .list { border-top: 1px solid var(--line); }
+.vrow { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; align-items: center; border-bottom: 1px solid var(--line); }
+.vrow .row { border-bottom: 0; grid-template-columns: 40px minmax(0, 1fr) auto; padding-right: 0; }
+.vrow.focus { background: var(--pink-soft); border-radius: 12px; }
+.heart-icon { width: 44px; height: 44px; border-radius: 50%; border: 0; background: none; color: var(--ink-3); cursor: pointer; display: grid; place-items: center; }
+.heart-icon[aria-pressed="true"] { color: var(--pink); }
+.heart-icon:disabled { opacity: .3; cursor: default; }
 
-/* Info */
+/* Wishlist */
+.wrow { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; border-bottom: 1px solid var(--line); }
+.wrow .row { border-bottom: 0; }
+.hit-pill { display: inline-block; font-size: 12.5px; font-weight: 800; color: #FFFFFF; background: var(--green); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.x-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; background: none; color: var(--ink-3); cursor: pointer; display: grid; place-items: center; }
+
+/* Help */
 .info { display: grid; gap: 8px; }
-.info h3 { margin: 12px 0 0; font: 800 21px/1 var(--f-display); text-transform: uppercase; letter-spacing: .01em; }
+.info h3 { margin: 12px 0 0; }
 .info h3:first-child { margin-top: 0; }
-.info p, .info li, .info dd { color: var(--ink-2); max-width: 62ch; }
-.info p { margin: 0; }
-.info dl { margin: 0; display: grid; gap: 4px; }
-.info dt { font-weight: 600; color: var(--ink); margin-top: 6px; }
-.info dd { margin: 0; }
-.info ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.info p, .info li { color: var(--ink-2); max-width: 60ch; margin: 0; }
+.info ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.info a { font-weight: 700; color: var(--ink); text-decoration-color: var(--pink-line); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 
 .toast {
-  position: fixed; left: 0; right: 0; margin-inline: auto; width: max-content; z-index: 70;
-  bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px) + 14px); max-width: calc(100% - 32px);
-  background: var(--ink); color: var(--bg); padding: 11px 16px; border-radius: 12px; font: 600 14px/1.3 var(--f-body); box-shadow: var(--shadow);
+  position: fixed; left: 0; right: 0; margin-inline: auto; width: max-content; max-width: calc(100% - 32px); z-index: 70;
+  bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px) + 14px);
+  display: flex; align-items: center; gap: 14px; background: var(--ink); color: #FFFFFF; padding: 11px 16px 11px 18px; border-radius: 999px;
+  font: 700 14.5px/1.3 var(--f); box-shadow: 0 10px 30px -10px rgba(20, 19, 23, .5);
 }
+.toast button { background: none; border: 0; color: #FFB3D3; font: 800 14.5px/1 var(--f); cursor: pointer; padding: 4px; }
 </style>
 </head>
 <body>
 <header class="top">
   <div class="wrap">
     <div class="top-row">
-      <a class="brand" href="#deals" data-tab="deals" aria-label="Snagr, go to deals">
-        <span class="brand-tag" aria-hidden="true">$</span>
-        <span class="brand-word">Snagr</span>
-        <span class="brand-sub" aria-hidden="true">TCG</span>
+      <a class="logo" href="#deals" data-tab="deals" aria-label="Snagr, go to deals">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 7.6A3.6 3.6 0 0 1 7.6 4h8.3a3.6 3.6 0 0 1 2.55 1.05l9.4 9.4a3.6 3.6 0 0 1 0 5.1l-8.3 8.3a3.6 3.6 0 0 1-5.1 0l-9.4-9.4A3.6 3.6 0 0 1 4 15.9Z" fill="#E8317A"/><circle cx="10.6" cy="10.6" r="2.7" fill="#FFFFFF"/></svg>
+        <span>snagr</span>
       </a>
-      <button class="icon-btn" type="button" data-act="info" aria-label="How it works">?</button>
+      <button class="help" type="button" data-act="info" aria-label="How Snagr works">?</button>
     </div>
     <nav class="games" id="games" role="tablist" aria-label="Choose a game"></nav>
   </div>
@@ -407,34 +284,37 @@ a { color: var(--accent); }
 
 <main class="wrap">
   <section class="view" id="view-deals" aria-label="Deals"></section>
-  <section class="view" id="view-hunt" aria-label="Hunt" hidden>
+  <section class="view" id="view-hunt" aria-label="Search" hidden>
     <form class="search" id="searchForm" role="search" autocomplete="off">
       <div class="search-field">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
         <label class="sr" for="q">Card name</label>
         <input id="q" name="q" type="search" enterkeyhint="search" spellcheck="false" autocapitalize="off" placeholder="Search Pokémon cards">
+        <button class="clear" type="button" id="clearQ" data-act="clear-search" aria-label="Clear search" hidden>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
       </div>
       <button class="btn" type="submit">Search</button>
     </form>
     <div id="huntBody"></div>
   </section>
-  <section class="view" id="view-watch" aria-label="Watchlist" hidden></section>
-  <noscript><div class="note"><p>Snagr needs JavaScript to look up prices.</p></div></noscript>
+  <section class="view" id="view-watch" aria-label="Wishlist" hidden></section>
+  <noscript><div class="note"><p>Snagr needs JavaScript turned on to look up prices.</p></div></noscript>
 </main>
 
 <nav class="tabbar" aria-label="Sections">
   <div class="tabbar-in" role="tablist">
     <button class="tab" type="button" role="tab" data-tab="deals" aria-selected="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 12.2V4.5A1.5 1.5 0 0 1 4.5 3h7.7a1.5 1.5 0 0 1 1.06.44l7.3 7.3a1.5 1.5 0 0 1 0 2.12l-7.7 7.7a1.5 1.5 0 0 1-2.12 0l-7.3-7.3A1.5 1.5 0 0 1 3 12.2Z"/><circle cx="8" cy="8" r="1.6" fill="currentColor" stroke="none"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" aria-hidden="true"><path d="M3 12.2V4.5A1.5 1.5 0 0 1 4.5 3h7.7a1.5 1.5 0 0 1 1.06.44l7.3 7.3a1.5 1.5 0 0 1 0 2.12l-7.7 7.7a1.5 1.5 0 0 1-2.12 0l-7.3-7.3A1.5 1.5 0 0 1 3 12.2Z"/><circle cx="8" cy="8" r="1.7" fill="currentColor" stroke="none"/></svg>
       Deals
     </button>
     <button class="tab" type="button" role="tab" data-tab="hunt" aria-selected="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
-      Hunt
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+      Search
     </button>
     <button class="tab" type="button" role="tab" data-tab="watch" aria-selected="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.2 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8Z"/></svg>
-      Watchlist
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3s-7.6-4.6-9.2-9.3C1.6 7.6 3.6 4.4 6.9 4.4c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.3 0 5.3 3.2 4.1 6.6-1.6 4.7-9.2 9.3-9.2 9.3Z"/></svg>
+      Wishlist
       <span class="badge" id="watchBadge" hidden></span>
     </button>
   </div>
@@ -444,19 +324,16 @@ a { color: var(--accent); }
   <div class="sheet-backdrop" data-close></div>
   <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
     <div class="sheet-head">
-      <div class="sheet-titles">
-        <div class="sheet-eyebrow" id="sheetEyebrow"></div>
-        <h2 class="sheet-title" id="sheetTitle"></h2>
-      </div>
+      <h2 class="sheet-title" id="sheetTitle"></h2>
       <button class="close" type="button" id="sheetClose" data-close aria-label="Close">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>
     <div class="sheet-body" id="sheetBody"></div>
   </div>
 </div>
 
-<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden><span id="toastText"></span><button type="button" id="toastAction" hidden></button></div>
 
 <script>
 (() => {
@@ -493,9 +370,9 @@ class NetError extends Error {
 }
 const SOURCE = {
   'api.scryfall.com': 'Scryfall', 'api.pokemontcg.io': 'the Pokémon TCG API', 'db.ygoprodeck.com': 'YGOPRODeck',
-  'optcgapi.com': 'the OPTCG API', 'api.lorcast.com': 'Lorcast',
+  'optcgapi.com': 'the OPTCG API', 'api.lorcast.com': 'Lorcast', 'api.swu-db.com': 'SWU-DB',
 };
-const HOST_GAP = { 'api.scryfall.com': 120, 'db.ygoprodeck.com': 80, 'api.lorcast.com': 120, 'optcgapi.com': 150, 'api.pokemontcg.io': 60 };
+const HOST_GAP = { 'api.scryfall.com': 120, 'db.ygoprodeck.com': 80, 'api.lorcast.com': 120, 'optcgapi.com': 150, 'api.pokemontcg.io': 60, 'api.swu-db.com': 120 };
 const nextAt = {};
 async function waitTurn(host) {
   const gap = HOST_GAP[host] || 0;
@@ -540,8 +417,8 @@ async function getJSON(url, { signal, ttl = 30 * 60e3, persist = true, okStatus 
   try { body = await res.json(); } catch { body = null; }
   if (!res.ok) {
     if (okStatus.includes(res.status)) return null;
-    if (res.status === 429) throw new NetError(`${cap(name)} is limiting requests right now. Wait a minute, then try again.`, 'rate', 429);
-    throw new NetError(`${cap(name)} answered with an error (${res.status}). Try again in a moment.`, 'http', res.status);
+    if (res.status === 429) throw new NetError(`${cap(name)} is getting too many requests right now. Wait a minute, then try again.`, 'rate', 429);
+    throw new NetError(`${cap(name)} sent back an error (${res.status}). Try again in a moment.`, 'http', res.status);
   }
   const entry = { t: Date.now(), v: body };
   mem.set(url, entry);
@@ -549,45 +426,99 @@ async function getJSON(url, { signal, ttl = 30 * 60e3, persist = true, okStatus 
   return body;
 }
 
-/* ------------------------------------------------------------------ games */
+/* ------------------------------------------------------------------ games
+   Games with a free price source get live prices. The rest search every app at once. */
 const GAMES = {
   pokemon: {
-    name: 'Pokémon TCG', short: 'Pokémon', host: 'api.pokemontcg.io', source: 'Pokémon TCG API',
+    name: 'Pokémon TCG', short: 'Pokémon', host: 'api.pokemontcg.io', kw: 'pokemon card', cm: 'Pokemon',
     suggest: ['Charizard ex', 'Umbreon ex', 'Pikachu ex', 'Mew ex', 'Gardevoir ex', 'Lugia V'],
-    radar: { hint: 'Chase cards from the newest sets with a TCGplayer listing under the market price.', loading: 'Scanning the newest sets. The Pokémon price source can take a few seconds.' },
-    fine: 'Prices: TCGplayer (USD) and Cardmarket (EUR) via the Pokémon TCG API. A low listing can be a played copy, so check the condition before you buy.',
+    radar: { hint: 'Cards from the newest sets that a seller is listing below the usual price.', loading: 'Scanning the newest sets. This takes a few seconds.' },
+    fine: 'Prices from TCGplayer through the Pokémon TCG API. A very cheap listing can be a played copy, so check the condition before you buy.',
   },
   mtg: {
-    name: 'Magic: The Gathering', short: 'Magic', host: 'api.scryfall.com', source: 'Scryfall',
+    name: 'Magic: The Gathering', short: 'Magic', host: 'api.scryfall.com', kw: 'mtg', cm: 'Magic',
     suggest: ['Sol Ring', 'Rhystic Study', 'The One Ring', 'Lightning Bolt', 'Cyclonic Rift', 'Sheoldred, the Apocalypse'],
-    radar: { hint: 'Popular Commander cards where another printing costs far less than the default one.', loading: 'Comparing printings of popular Commander cards.' },
-    fine: 'Prices: TCGplayer market (USD) and Cardmarket trend (EUR) via Scryfall, updated daily.',
+    radar: { hint: 'Popular Commander cards where another version costs much less than the usual one.', loading: 'Comparing versions of popular Commander cards.' },
+    fine: 'Prices from TCGplayer through Scryfall, updated daily.',
   },
   yugioh: {
-    name: 'Yu-Gi-Oh!', short: 'Yu-Gi-Oh!', host: 'db.ygoprodeck.com', source: 'YGOPRODeck',
+    name: 'Yu-Gi-Oh!', short: 'Yu-Gi-Oh!', host: 'db.ygoprodeck.com', kw: 'yugioh card', cm: 'YuGiOh',
     suggest: ['Ash Blossom', 'Maxx "C"', 'Called by the Grave', 'Infinite Impermanence', 'Accesscode Talker', 'Blue-Eyes White Dragon'],
-    radar: { hint: 'Staple cards where one printing costs far less than the typical printing.', loading: 'Checking printings of staple cards.' },
-    fine: 'Prices via YGOPRODeck. Store prices are the lowest each store lists for any printing. Card images are hidden at YGOPRODeck’s request.',
+    radar: { hint: 'Staple cards where one version costs much less than the usual one.', loading: 'Checking every version of the staple cards.' },
+    fine: 'Prices through YGOPRODeck. Card pictures are hidden because YGOPRODeck asks apps not to link to its images.',
   },
   onepiece: {
-    name: 'One Piece Card Game', short: 'One Piece', host: 'optcgapi.com', source: 'OPTCG API',
+    name: 'One Piece Card Game', short: 'One Piece', host: 'optcgapi.com', kw: 'one piece card', cm: 'OnePiece',
     suggest: ['Luffy', 'Zoro', 'Nami', 'Shanks', 'Yamato', 'Boa Hancock'],
-    radar: { hint: 'Cards whose listed price on TCGplayer sits under the market price.', loading: 'Loading every One Piece card. The first load takes a few seconds.' },
-    fine: 'Prices: TCGplayer market and listed prices via the OPTCG API, refreshed daily.',
+    radar: { hint: 'Cards a seller is listing below the usual price on TCGplayer.', loading: 'Loading every One Piece card. The first time takes a few seconds.' },
+    fine: 'Prices from TCGplayer through the OPTCG API, refreshed daily.',
   },
   lorcana: {
-    name: 'Disney Lorcana', short: 'Lorcana', host: 'api.lorcast.com', source: 'Lorcast',
+    name: 'Disney Lorcana', short: 'Lorcana', host: 'api.lorcast.com', kw: 'lorcana card', cm: 'Lorcana',
     suggest: ['Elsa', 'Stitch', 'Mickey Mouse', 'Maleficent', 'Belle', 'Hades'],
     radar: null,
-    fine: 'Prices: TCGplayer market (USD) via Lorcast.',
+    fine: 'Prices from TCGplayer through Lorcast.',
+  },
+  swu: {
+    name: 'Star Wars: Unlimited', short: 'Star Wars', host: 'api.swu-db.com', kw: 'star wars unlimited card', cm: 'StarWarsUnlimited',
+    suggest: ['Luke Skywalker', 'Darth Vader', 'Boba Fett', 'Ahsoka Tano', 'Grogu', 'Thrawn'],
+    radar: { hint: 'Cards from the newest sets that a seller is listing below the usual price.', loading: 'Scanning the newest Star Wars: Unlimited sets.' },
+    fine: 'Prices from TCGplayer through SWU-DB.',
+  },
+  riftbound: {
+    name: 'Riftbound', short: 'Riftbound', linksOnly: true, kw: 'riftbound card',
+    suggest: ['Jinx', 'Ahri', 'Yasuo', 'Lux', 'Viktor', 'Teemo'],
+  },
+  digimon: {
+    name: 'Digimon Card Game', short: 'Digimon', linksOnly: true, kw: 'digimon card', cm: 'Digimon',
+    suggest: ['Omnimon', 'Agumon', 'Gabumon', 'Imperialdramon', 'Beelzemon', 'Gallantmon'],
+  },
+  fab: {
+    name: 'Flesh and Blood', short: 'Flesh and Blood', linksOnly: true, kw: 'flesh and blood tcg', cm: 'FleshAndBlood',
+    suggest: ['Dorinthea', 'Bravo', 'Katsu', 'Prism', 'Fai', 'Kano'],
+  },
+  dbs: {
+    name: 'Dragon Ball Super Card Game', short: 'Dragon Ball', linksOnly: true, kw: 'dragon ball super fusion world card',
+    suggest: ['Son Goku', 'Vegeta', 'Son Gohan', 'Frieza', 'Broly', 'Trunks'],
+  },
+  gundam: {
+    name: 'Gundam Card Game', short: 'Gundam', linksOnly: true, kw: 'gundam card game',
+    suggest: ['Gundam Aerial', 'Strike Freedom', 'Wing Gundam', 'Barbatos', 'Unicorn Gundam', 'Zaku II'],
   },
 };
-const GAME_ORDER = ['pokemon', 'mtg', 'yugioh', 'onepiece', 'lorcana'];
+const GAME_ORDER = ['pokemon', 'mtg', 'yugioh', 'onepiece', 'lorcana', 'swu', 'riftbound', 'digimon', 'fab', 'dbs', 'gundam'];
+const LIVE_GAMES = GAME_ORDER.filter(id => !GAMES[id].linksOnly);
+
+/* ------------------------------------------------------------------ other apps
+   One tap opens the same search in each app. Prices show where the data has them. */
+const STORES = [
+  { name: 'TCGplayer', url: q => `https://www.tcgplayer.com/search/all/product?q=${enc(q)}` },
+  { name: 'eBay', general: true, url: q => `https://www.ebay.com/sch/i.html?_nkw=${enc(q)}&_sop=15` },
+  { name: 'Mercari', general: true, url: q => `https://www.mercari.com/search/?keyword=${enc(q)}` },
+  { name: 'Whatnot', general: true, url: q => `https://www.whatnot.com/search?query=${enc(q)}` },
+  { name: 'Facebook Marketplace', general: true, url: q => `https://www.facebook.com/marketplace/search/?query=${enc(q)}` },
+  { name: 'Amazon', general: true, url: q => `https://www.amazon.com/s?k=${enc(q)}` },
+  { name: 'Card Kingdom', games: ['mtg'], url: q => `https://www.cardkingdom.com/catalog/search?search=header&filter%5Bname%5D=${enc(q)}` },
+  { name: 'Star City Games', games: ['mtg'], url: q => `https://starcitygames.com/search/?search_query=${enc(q)}` },
+  { name: 'Troll and Toad', url: q => `https://www.trollandtoad.com/category.php?selected-cat=0&search-words=${enc(q)}` },
+  { name: 'CoolStuffInc', url: q => `https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&resultsPerPage=25&q=${enc(q)}` },
+  { name: 'Cardmarket', eu: true, url: (q, G) => `https://www.cardmarket.com/en/${G.cm}/Products/Search?searchString=${enc(q)}` },
+];
+function appLinks(game, cardName, known) {
+  const G = GAMES[game];
+  return STORES.filter(s => (!s.games || s.games.includes(game)) && (!s.eu || G.cm)).map(s => {
+    const k = known && known.find(o => o.store === s.name);
+    return { name: s.eu ? 'Cardmarket (EU)' : s.name, url: s.url(s.general ? `${cardName} ${G.kw}` : cardName, G), price: k ? k.price : null, cur: k ? k.cur : 'USD' };
+  });
+}
+function appsGrid(links) {
+  return `<div class="apps">${links.map(l => `<a class="app" href="${esc(l.url)}" target="_blank" rel="noopener"><span>${esc(l.name)}</span>${l.price != null ? `<b>${money(l.price, l.cur)}</b>` : ''}</a>`).join('')}</div>`;
+}
 
 /* ------------------------------------------------------------------ deal math
    Offer   { store, tag, kind: 'ask' | 'market', price, cur: 'USD' | 'EUR', url, stale? }
    Variant { label, key, offers[] }      Printing { id, setName, setCode, number, rarity, released, image, variants[] } */
-const OUTLIER = 0.6; // a listing more than 60% under market is usually damaged, a proxy or mislabeled
+const OUTLIER = 0.6; // a listing more than 60% under the usual price is usually damaged, a proxy or mislabeled
 function evalVariant(v) {
   const usd = ((v && v.offers) || []).filter(o => o.cur === 'USD' && o.price != null);
   const mk = usd.find(o => o.kind === 'market') || null;
@@ -602,44 +533,31 @@ function evalVariant(v) {
   const pct = best && best.kind === 'ask' && market ? (market - best.price) / market : null;
   return { best, market, pct, outlier, caution };
 }
-function tier(p) {
-  if (p == null) return null;
-  if (p >= 0.30) return { id: 'steal', label: 'Steal' };
-  if (p >= 0.15) return { id: 'great', label: 'Great deal' };
-  if (p >= 0.05) return { id: 'good', label: 'Good price' };
-  if (p > -0.05) return { id: 'fair', label: 'At market' };
-  return { id: 'high', label: 'Above market' };
-}
 function evalGroup(g) {
-  let cheapest = null, deal = null;
+  let cheapest = null;
   for (const p of g.printings || []) for (const v of p.variants) {
     const e = evalVariant(v);
     if (!e.best) continue;
     if (!cheapest || e.best.price < cheapest.e.best.price) cheapest = { p, v, e };
-    if (e.pct != null && e.pct >= 0.05 && e.market >= 1 && !e.caution && (!deal || e.pct > deal.e.pct)) deal = { p, v, e };
   }
   const storeBest = (g.storeOffers || []).filter(o => o.cur === 'USD' && o.price != null).sort((a, b) => a.price - b.price)[0] || null;
   const typical = median((g.printings || []).map(p => evalVariant(p.variants[0]).market));
-  return { cheapest, deal, storeBest, typical };
+  return { cheapest, storeBest, typical };
 }
+const plainVersion = label => /^(normal|nonfoil|regular)$/i.test(label) ? '' : label;
 function finishGroup(g) {
   if (g.printings) {
     const ev = evalGroup(g);
-    let price = ev.cheapest ? ev.cheapest.e.best.price : null, note = '';
-    if (ev.storeBest && (price == null || ev.storeBest.price <= price)) { price = ev.storeBest.price; note = `Lowest at ${ev.storeBest.store}`; }
+    let price = ev.cheapest ? ev.cheapest.e.best.price : null, save = null;
+    if (ev.storeBest && (price == null || ev.storeBest.price <= price)) price = ev.storeBest.price;
     else if (ev.cheapest) {
-      const { p, v, e } = ev.cheapest;
-      const ver = /^(normal|nonfoil|regular)$/i.test(v.label) ? '' : ` · ${v.label}`;
-      note = e.best.kind === 'ask' ? `${e.best.tag === 'Listed' ? 'Listed' : 'Lowest listing'} · ${p.setName}${ver}` : `Cheapest version · ${p.setName}${ver}`;
+      const ce = ev.cheapest.e;
+      if (ce.pct != null && ce.pct >= 0.05 && !ce.caution) save = ce.market - ce.best.price;
     }
-    g.from = { price, note };
-    // badge only the price shown in the row, so the tag and the sticker always describe the same listing
-    const ce = ev.cheapest && ev.cheapest.e;
-    g.deal = ce && price === ce.best.price && ce.pct != null && ce.pct >= 0.05 && !ce.caution ? { pct: ce.pct } : null;
+    g.from = { price, save };
   } else if (g.preview) {
     const b = g.preview.variants.map(evalVariant).filter(e => e.best).sort((x, y) => x.best.price - y.best.price)[0];
-    g.from = { price: b ? b.best.price : null, note: b ? `Cheapest printing · ${g.preview.setName}` : '' };
-    g.deal = null;
+    g.from = { price: b ? b.best.price : null, save: null };
   }
   return g;
 }
@@ -648,27 +566,28 @@ function rankGroups(groups, q) {
   const score = g => { const x = norm(g.name); return x === n ? 0 : x.startsWith(n) ? 1 : x.split(' ').some(w => w.startsWith(n)) ? 2 : 3; };
   return groups.map((g, i) => [score(g), i, g]).sort((a, b) => a[0] - b[0] || a[1] - b[1]).map(x => x[2]);
 }
+const setLine = p => `${p.setName || 'Unknown set'}${p.number ? ' #' + p.number : ''}`;
 
-/* ------------------------------------------------------------------ sources */
+/* ------------------------------------------------------------------ price sources */
 const A = {};
 const SF = 'https://api.scryfall.com';
 const PT = 'https://api.pokemontcg.io/v2';
 const YG = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';
 const OP = 'https://optcgapi.com/api';
 const LC = 'https://api.lorcast.com/v0';
+const SW = 'https://api.swu-db.com';
 
 /* Magic via Scryfall */
 const sfImg = (c, size) => (c.image_uris && c.image_uris[size]) || (c.card_faces && c.card_faces[0] && c.card_faces[0].image_uris && c.card_faces[0].image_uris[size]) || null;
 const sfOracle = c => c.oracle_id || (c.card_faces && c.card_faces[0] && c.card_faces[0].oracle_id) || null;
-const SF_FIN = { nonfoil: ['Nonfoil', 'usd', 'eur'], foil: ['Foil', 'usd_foil', 'eur_foil'], etched: ['Etched foil', 'usd_etched', 'eur_etched'] };
+const SF_FIN = { nonfoil: ['Nonfoil', 'usd'], foil: ['Foil', 'usd_foil'], etched: ['Etched foil', 'usd_etched'] };
 function sfPrinting(c) {
   const fins = (c.finishes && c.finishes.length ? c.finishes : ['nonfoil']).filter(f => SF_FIN[f]);
   const prices = c.prices || {}, buy = c.purchase_uris || {};
   const variants = fins.map(f => {
-    const [label, u, e] = SF_FIN[f];
+    const [label, u] = SF_FIN[f];
     const offers = [];
     if (num(prices[u]) != null) offers.push({ store: 'TCGplayer', tag: 'Market', kind: 'market', price: num(prices[u]), cur: 'USD', url: buy.tcgplayer || null });
-    if (num(prices[e]) != null) offers.push({ store: 'Cardmarket', tag: 'CM trend', kind: 'market', price: num(prices[e]), cur: 'EUR', url: buy.cardmarket || null });
     return { label, key: f, offers };
   });
   return {
@@ -718,11 +637,7 @@ A.mtg = {
       const pct = (typical - low) / typical;
       if (pct < 0.2) continue;
       const p = sfPrinting(c);
-      deals.push({
-        game: 'mtg', name: c.name, image: p.image, code: p.setCode, price: low, pct,
-        where: `${c.set_name} · #${c.collector_number}`, why: `vs ${money(typical)} for the ${d.set_name} printing`,
-        focus: p.id, group: sfGroup(c),
-      });
+      deals.push({ game: 'mtg', name: c.name, image: p.image, code: p.setCode, price: low, ref: typical, pct, where: setLine(p), focus: p.id, group: sfGroup(c) });
     }
     return deals.sort((x, y) => y.pct - x.pct).slice(0, 30);
   },
@@ -741,7 +656,7 @@ A.mtg = {
 };
 
 /* Pokémon via the Pokémon TCG API */
-const PT_SEL = 'id,name,number,rarity,set,images,tcgplayer,cardmarket';
+const PT_SEL = 'id,name,number,rarity,set,images,tcgplayer';
 const PT_LABEL = { normal: 'Normal', holofoil: 'Holofoil', reverseHolofoil: 'Reverse holo', '1stEditionHolofoil': '1st Edition holo', '1stEditionNormal': '1st Edition', unlimitedHolofoil: 'Unlimited holo', unlimited: 'Unlimited', '1stEdition': '1st Edition' };
 function ptQuery(input) {
   const words = norm(input).split(' ').filter(Boolean);
@@ -755,29 +670,16 @@ function ptQuery(input) {
 }
 function ptVariants(c) {
   const tp = (c.tcgplayer && c.tcgplayer.prices) || {};
-  const cm = (c.cardmarket && c.cardmarket.prices) || null;
-  const cmStale = daysSince(c.cardmarket && c.cardmarket.updatedAt) > 30;
-  const tpUrl = (c.tcgplayer && c.tcgplayer.url) || null, cmUrl = (c.cardmarket && c.cardmarket.url) || null;
-  const cmOffers = rh => {
-    const out = [];
-    if (!cm) return out;
-    const trend = num(rh ? cm.reverseHoloTrend : cm.trendPrice), low = num(rh ? cm.reverseHoloLow : cm.lowPrice);
-    if (trend != null) out.push({ store: 'Cardmarket', tag: 'CM trend', kind: 'market', price: trend, cur: 'EUR', url: cmUrl, stale: cmStale });
-    if (low != null) out.push({ store: 'Cardmarket', tag: 'CM low', kind: 'ask', price: low, cur: 'EUR', url: cmUrl, stale: cmStale });
-    return out;
-  };
-  let cmUsed = false;
+  const tpUrl = (c.tcgplayer && c.tcgplayer.url) || null;
   const vs = Object.keys(tp).map(k => {
     const p = tp[k] || {};
     const offers = [];
     if (num(p.market) != null) offers.push({ store: 'TCGplayer', tag: 'Market', kind: 'market', price: num(p.market), cur: 'USD', url: tpUrl });
     if (num(p.low) != null) offers.push({ store: 'TCGplayer', tag: 'Low', kind: 'ask', price: num(p.low), cur: 'USD', url: tpUrl });
-    if (num(p.directLow) != null) offers.push({ store: 'TCGplayer Direct', tag: 'Direct', kind: 'ask', price: num(p.directLow), cur: 'USD', url: tpUrl });
-    if (k === 'reverseHolofoil') offers.push(...cmOffers(true));
-    else if (!cmUsed) { cmUsed = true; offers.push(...cmOffers(false)); }
+    if (num(p.directLow) != null) offers.push({ store: 'TCGplayer', tag: 'Direct', kind: 'ask', price: num(p.directLow), cur: 'USD', url: tpUrl });
     return { label: PT_LABEL[k] || humanize(k), key: k, offers };
   });
-  if (!vs.length) vs.push({ label: 'Any version', key: 'any', offers: cmOffers(false) });
+  if (!vs.length) vs.push({ label: 'Normal', key: 'none', offers: [] });
   return vs;
 }
 function ptPrinting(c) {
@@ -800,7 +702,7 @@ function ptGroups(cards) {
     g.printings.sort((a, b) => (b.released || '').localeCompare(a.released || ''));
     const p0 = g.printings[0];
     g.image = p0.image; g.imageLarge = p0.imageLarge; g.code = p0.setCode;
-    g.sub = g.printings.length > 1 ? `${g.printings.length} cards with this name` : `${p0.setName} · #${p0.number}`;
+    g.sub = g.printings.length > 1 ? `${g.printings.length} cards with this name` : setLine(p0);
     return g;
   });
 }
@@ -828,10 +730,9 @@ A.pokemon = {
         const e = evalVariant(v);
         if (e.pct == null || e.market < 3 || e.pct < 0.08 || e.caution) continue;
         deals.push({
-          game: 'pokemon', name: c.name, image: p.image, code: p.setCode, price: e.best.price, pct: e.pct,
-          where: `${p.setName} · #${p.number} · ${v.label}`,
-          why: `${e.best.tag === 'Direct' ? 'TCGplayer Direct' : 'Lowest listing'} vs ${money(e.market)} market`,
-          focus: p.id, group: { game: 'pokemon', key: norm(c.name), name: c.name, printings: [p], image: p.image, imageLarge: p.imageLarge, code: p.setCode, sub: `${p.setName} · #${p.number}`, partial: true },
+          game: 'pokemon', name: c.name, image: p.image, code: p.setCode, price: e.best.price, ref: e.market, pct: e.pct,
+          where: `${setLine(p)}${plainVersion(v.label) ? ', ' + v.label : ''}`, focus: p.id,
+          group: { game: 'pokemon', key: norm(c.name), name: c.name, printings: [p], image: p.image, imageLarge: p.imageLarge, code: p.setCode, sub: setLine(p), partial: true },
         });
       }
     }
@@ -857,19 +758,11 @@ A.pokemon = {
 };
 
 /* Yu-Gi-Oh! via YGOPRODeck (their API guide asks apps not to hotlink card images) */
-function ygStoreUrl(store, name) {
-  return {
-    TCGplayer: `https://www.tcgplayer.com/search/yugioh/product?productLineName=yugioh&q=${enc(name)}`,
-    CoolStuffInc: `https://www.coolstuffinc.com/main_search.php?pa=searchOnName&page=1&resultsPerPage=25&q=${enc(name)}`,
-    Amazon: `https://www.amazon.com/s?k=${enc(name + ' yugioh card')}`,
-    eBay: `https://www.ebay.com/sch/i.html?_nkw=${enc(name + ' yugioh')}`,
-    Cardmarket: `https://www.cardmarket.com/en/YuGiOh/Products/Search?searchString=${enc(name)}`,
-  }[store];
-}
 function ygGroup(c) {
   const p = (c.card_prices && c.card_prices[0]) || {};
+  const tcgSearch = `https://www.tcgplayer.com/search/yugioh/product?productLineName=yugioh&q=${enc(c.name)}`;
   const storeOffers = [['TCGplayer', 'tcgplayer_price', 'USD'], ['CoolStuffInc', 'coolstuffinc_price', 'USD'], ['Amazon', 'amazon_price', 'USD'], ['eBay', 'ebay_price', 'USD'], ['Cardmarket', 'cardmarket_price', 'EUR']]
-    .map(([s, k, cur]) => ({ store: s, tag: s, kind: 'ask', price: num(p[k]), cur, url: ygStoreUrl(s, c.name) }))
+    .map(([s, k, cur]) => ({ store: s, tag: s, kind: 'ask', price: num(p[k]), cur, url: null }))
     .filter(o => o.price != null);
   const seen = new Set();
   const printings = (c.card_sets || []).filter(s => {
@@ -881,7 +774,7 @@ function ygGroup(c) {
     return {
       id: `${c.id}~${s.set_code}~${s.set_rarity_code || s.set_rarity}`, setName: s.set_name || '', setCode: s.set_code || '', number: '',
       rarity: s.set_rarity || '', released: '', image: null,
-      variants: [{ label: s.set_rarity || 'Printing', key: 'set', offers: price != null ? [{ store: 'TCGplayer', tag: 'Set price', kind: 'market', price, cur: 'USD', url: ygStoreUrl('TCGplayer', c.name) }] : [] }],
+      variants: [{ label: s.set_rarity || 'Printing', key: 'set', offers: price != null ? [{ store: 'TCGplayer', tag: 'Set price', kind: 'market', price, cur: 'USD', url: tcgSearch }] : [] }],
     };
   });
   const firstCode = (c.card_sets && c.card_sets[0] && c.card_sets[0].set_code) || '';
@@ -907,10 +800,7 @@ A.yugioh = {
       if (!typical || typical < 1) continue;
       const pct = (typical - low.price) / typical;
       if (pct < 0.3) continue;
-      deals.push({
-        game: 'yugioh', name: c.name, image: null, code: low.p.setCode.split('-')[0], price: low.price, pct,
-        where: `${low.p.setName} · ${low.p.rarity}`, why: `Cheapest printing vs ${money(typical)} typical`, focus: low.p.id, group: g,
-      });
+      deals.push({ game: 'yugioh', name: c.name, image: null, code: low.p.setCode.split('-')[0], price: low.price, ref: typical, pct, where: `${low.p.setName}, ${low.p.rarity}`, focus: low.p.id, group: g });
     }
     return deals.sort((a, b) => b.pct - a.pct).slice(0, 30);
   },
@@ -987,7 +877,7 @@ function opGroups(cards) {
     g.printings.sort((a, b) => (a.id === g.key ? -1 : b.id === g.key ? 1 : a.id.localeCompare(b.id)));
     const p0 = g.printings[0];
     g.image = p0.image; g.imageLarge = p0.imageLarge; g.code = g.key;
-    g.sub = `${g.key} · ${p0.setName}${g.printings.length > 1 ? ` · ${g.printings.length} versions` : ''}`;
+    g.sub = `${g.key}, ${p0.setName}${g.printings.length > 1 ? `, ${g.printings.length} versions` : ''}`;
     return g;
   });
 }
@@ -1010,11 +900,7 @@ A.onepiece = {
     for (const c of cards) {
       const p = opPrinting(c), v = p.variants[0], e = evalVariant(v);
       if (e.pct == null || e.market < 3 || e.pct < 0.1 || e.caution) continue;
-      deals.push({
-        game: 'onepiece', name: opBase(c.card_name), image: p.image, code: c.card_set_id, price: e.best.price, pct: e.pct,
-        where: `${c.card_set_id} · ${p.setName} · ${v.label}`, why: `Listed vs ${money(e.market)} market`, focus: p.id,
-        groupKey: c.card_set_id,
-      });
+      deals.push({ game: 'onepiece', name: opBase(c.card_name), image: p.image, code: c.card_set_id, price: e.best.price, ref: e.market, pct: e.pct, where: `${c.card_set_id}, ${plainVersion(v.label) || p.setName}`, focus: p.id, groupKey: c.card_set_id });
     }
     deals.sort((a, b) => b.pct - a.pct);
     const top = deals.slice(0, 30);
@@ -1052,7 +938,7 @@ function lcPrinting(c) {
 function lcGroups(cards) {
   const m = new Map();
   for (const c of cards) {
-    const name = c.version ? `${c.name} – ${c.version}` : c.name;
+    const name = c.version ? `${c.name}, ${c.version}` : c.name;
     const k = norm(name);
     if (!m.has(k)) m.set(k, { game: 'lorcana', key: k, name, baseName: c.name, printings: [] });
     m.get(k).printings.push(lcPrinting(c));
@@ -1061,7 +947,7 @@ function lcGroups(cards) {
     g.printings.sort((a, b) => (b.released || '').localeCompare(a.released || ''));
     const p0 = g.printings[0];
     g.image = p0.image; g.imageLarge = p0.imageLarge; g.code = p0.number ? `#${p0.number}` : '';
-    g.sub = g.printings.length > 1 ? `${g.printings.length} printings` : `${p0.setName} · #${p0.number}`;
+    g.sub = g.printings.length > 1 ? `${g.printings.length} versions` : setLine(p0);
     return g;
   });
 }
@@ -1090,6 +976,101 @@ A.lorcana = {
   },
 };
 
+/* Star Wars: Unlimited via SWU-DB */
+const swDate = s => { const m = String(s || '').match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/); if (!m) return null; const y = +m[3] < 100 ? 2000 + +m[3] : +m[3]; return Date.UTC(y, +m[1] - 1, +m[2]); };
+let swSetNames = null;
+async function swSets(signal) {
+  const r = await getJSON(`${SW}/sets`, { signal, ttl: 24 * HOUR });
+  const list = Array.isArray(r) ? r : [];
+  swSetNames = Object.fromEntries(list.map(s => [String(s.setId || '').toUpperCase(), s.fullName || s.setId]));
+  return list;
+}
+function swPrinting(c) {
+  const set = String(c.Set || '').toUpperCase();
+  const url = c.tcgplayerId ? `https://www.tcgplayer.com/product/${c.tcgplayerId}` : `https://www.tcgplayer.com/search/star-wars-unlimited/product?productLineName=star-wars-unlimited&q=${enc(c.Name || '')}`;
+  const offer = (tag, kind, price) => ({ store: 'TCGplayer', tag, kind, price, cur: 'USD', url });
+  const normal = [], foil = [];
+  if (num(c.MarketPrice) != null) normal.push(offer('Market', 'market', num(c.MarketPrice)));
+  if (num(c.LowPrice) != null) normal.push(offer('Low', 'ask', num(c.LowPrice)));
+  if (num(c.FoilPrice) != null) foil.push(offer('Market', 'market', num(c.FoilPrice)));
+  if (num(c.LowFoilPrice) != null) foil.push(offer('Low', 'ask', num(c.LowFoilPrice)));
+  const vt = c.VariantType && c.VariantType !== 'Normal' ? c.VariantType : '';
+  const vs = [];
+  if (normal.length || !foil.length) vs.push({ label: vt || 'Normal', key: 'n', offers: normal });
+  if (foil.length) vs.push({ label: vt ? `${vt} foil` : 'Foil', key: 'f', offers: foil });
+  return {
+    id: `${set}-${c.Number}`, setName: (swSetNames && swSetNames[set]) || set, setCode: set, number: String(c.Number || ''), rarity: c.Rarity || '', released: '',
+    image: c.FrontArt || null, imageLarge: c.FrontArt || null, variants: vs,
+  };
+}
+const swName = c => c.Subtitle ? `${c.Name}, ${c.Subtitle}` : (c.Name || '');
+function swGroups(cards) {
+  const m = new Map();
+  for (const c of cards) {
+    const name = swName(c), k = norm(name);
+    if (!k) continue;
+    if (!m.has(k)) m.set(k, { game: 'swu', key: k, name, baseName: c.Name, printings: [] });
+    const g = m.get(k), p = swPrinting(c);
+    if (!g.printings.some(x => x.id === p.id)) g.printings.push(p);
+  }
+  return [...m.values()].map(g => {
+    const p0 = g.printings[0];
+    g.image = p0.image; g.imageLarge = p0.imageLarge; g.code = p0.id;
+    g.sub = g.printings.length > 1 ? `${g.printings.length} versions` : setLine(p0);
+    return g;
+  });
+}
+A.swu = {
+  async search(q, signal) {
+    const [r] = await Promise.all([
+      getJSON(`${SW}/cards/search?q=${enc(q)}`, { signal, ttl: 3 * HOUR, okStatus: [400, 404] }),
+      swSetNames ? null : swSets(signal).catch(() => null),
+    ]);
+    return rankGroups(swGroups((r && r.data) || []), q).slice(0, 40);
+  },
+  async radar(signal) {
+    const sets = await swSets(signal);
+    const now = Date.now();
+    const recent = sets.filter(s => s.isBaseSet && swDate(s.releaseDate) && swDate(s.releaseDate) <= now && (s.numberCards || 0) >= 100)
+      .sort((a, b) => swDate(b.releaseDate) - swDate(a.releaseDate)).slice(0, 2);
+    if (!recent.length) throw new NetError('SWU-DB didn’t list any recent sets.', 'http');
+    const res = await Promise.allSettled(recent.map(s => getJSON(`${SW}/cards/${enc(s.setId)}`, { signal, ttl: 2 * HOUR })));
+    const cards = res.flatMap(r => r.status === 'fulfilled' ? ((r.value && r.value.data) || []) : []);
+    if (!cards.length) {
+      const failed = res.find(r => r.status === 'rejected');
+      throw failed ? failed.reason : new NetError('No prices came back for the newest sets.', 'http');
+    }
+    const deals = [];
+    for (const c of cards) {
+      const p = swPrinting(c);
+      for (const v of p.variants) {
+        const e = evalVariant(v);
+        if (e.pct == null || e.market < 2 || e.pct < 0.08 || e.caution) continue;
+        deals.push({
+          game: 'swu', name: swName(c), image: p.image, code: p.id, price: e.best.price, ref: e.market, pct: e.pct,
+          where: `${setLine(p)}${plainVersion(v.label) ? ', ' + v.label : ''}`, focus: p.id,
+          group: { game: 'swu', key: norm(swName(c)), name: swName(c), baseName: c.Name, printings: [p], image: p.image, imageLarge: p.imageLarge, code: p.id, sub: setLine(p), partial: true },
+        });
+      }
+    }
+    return deals.sort((a, b) => b.pct - a.pct).slice(0, 30);
+  },
+  async refresh(items, signal) {
+    const out = {};
+    for (const w of items) {
+      const i = w.pid.lastIndexOf('-');
+      if (i < 1) continue;
+      try {
+        const c = await getJSON(`${SW}/cards/${enc(w.pid.slice(0, i))}/${enc(w.pid.slice(i + 1))}`, { signal, ttl: 30 * 60e3, okStatus: [404] });
+        const v = c && swPrinting(c).variants.find(x => x.key === w.vkey);
+        const e = v && evalVariant(v);
+        if (e && e.best) out[w.id] = { price: e.best.price, url: e.best.url };
+      } catch (err) { if (err.name === 'AbortError') throw err; }
+    }
+    return out;
+  },
+};
+
 /* ------------------------------------------------------------------ state */
 const savedGame = store.get('game', 'pokemon');
 const state = {
@@ -1100,15 +1081,14 @@ const state = {
   radar: {},
   watch: Array.isArray(store.get('watch', [])) ? store.get('watch', []) : [],
   checking: false,
-  wEdit: null,
-  wRemove: null,
 };
 let detail = null;
 let sheetAbort = new AbortController();
 let searchCtl = null, searchTimer = null;
 
-const STAR = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m12 3.2 2.7 5.6 6.1.8-4.5 4.2 1.1 6.1L12 17l-5.4 2.9 1.1-6.1-4.5-4.2 6.1-.8Z"/></svg>';
-const STAR_ON = STAR.replace('fill="none"', 'fill="currentColor"');
+const HEART = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 20.3s-7.6-4.6-9.2-9.3C1.6 7.6 3.6 4.4 6.9 4.4c2.1 0 3.6 1.2 5.1 3 1.5-1.8 3-3 5.1-3 3.3 0 5.3 3.2 4.1 6.6-1.6 4.7-9.2 9.3-9.2 9.3Z"/></svg>';
+const HEART_ON = HEART.replace('fill="none"', 'fill="currentColor"');
+const X_ICON = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
 
 const watchId = (game, pid, vkey) => `${game}|${pid}|${vkey}`;
 function splitWid(wid) {
@@ -1118,49 +1098,51 @@ function splitWid(wid) {
 const isWatched = wid => state.watch.some(w => w.id === wid);
 const isHit = w => w.last != null && w.target != null && w.last <= w.target;
 function saveWatch() {
-  if (!store.set('watch', state.watch)) toast('This browser blocks saving, so your watchlist lasts until you close the page.');
+  if (!store.set('watch', state.watch)) toast('This browser blocks saving, so your wishlist only lasts until you close Snagr.');
   renderBadge();
 }
-function removeWatch(wid) {
-  state.watch = state.watch.filter(w => w.id !== wid);
+function removeWatch(wid, undoable) {
+  const i = state.watch.findIndex(w => w.id === wid);
+  if (i < 0) return;
+  const [gone] = state.watch.splice(i, 1);
   saveWatch();
-  toast('Removed from watchlist');
+  if (state.tab === 'watch') renderWatch();
+  toast('Removed from wishlist', undoable ? { label: 'Undo', run: () => { state.watch.splice(i, 0, gone); saveWatch(); if (state.tab === 'watch') renderWatch(); } } : null);
 }
 
 /* ------------------------------------------------------------------ render bits */
 function thumb(src, game, code, size) {
-  return `<span class="thumb t-${game}${size ? ' ' + size : ''}" style="--gc: var(--g-${game})"><span class="tile"><span>${esc(code || GAMES[game].short)}</span></span>${src ? `<img src="${esc(src)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ''}</span>`;
-}
-function pctBadge(p) {
-  const t = tier(p);
-  if (!t || p < 0.05) return '';
-  return `<span class="pct ${t.id}"><span aria-hidden="true">−${pctText(p)}</span><span class="sr">${pctText(p)} cheaper</span></span>`;
+  return `<span class="thumb${size ? ' ' + size : ''}"><span class="tile"><span>${esc(code || GAMES[game].short)}</span></span>${src ? `<img src="${esc(src)}" alt="" loading="lazy" decoding="async" onerror="this.remove()">` : ''}</span>`;
 }
 function skeleton(n) {
   let rows = '';
-  for (let i = 0; i < n; i++) rows += `<div class="row sk" aria-hidden="true"><span class="thumb"></span><span class="row-main"><span class="sk-line" style="width:${[72, 58, 80, 64, 76, 54][i % 6]}%"></span><span class="sk-line short"></span></span><span class="sk-tag"></span></div>`;
-  return `<div class="list" aria-busy="true">${rows}</div>`;
+  for (let i = 0; i < n; i++) rows += `<div class="row sk" aria-hidden="true"><span class="thumb"></span><span class="row-main"><span class="sk-line" style="width:${[72, 58, 80, 64, 76, 54][i % 6]}%"></span><span class="sk-line short"></span></span><span class="sk-price"></span></div>`;
+  return `<div class="list">${rows}</div>`;
 }
+const loadingBlock = (text, rows) => `<p class="loading-text" role="status">${esc(text)}</p>${skeleton(rows)}`;
 function errorNote(err, act) {
   let msg = (err && err.message) || 'Something went wrong.';
-  if (err && err.kind === 'network') msg += ' Check that you’re online and try again. If this page is open inside an app preview, open it from its own web address instead, because previews often block other sites.';
-  return `<div class="note err" role="alert"><p>${esc(msg)}</p><button class="btn" type="button" data-act="${act}">Try again</button></div>`;
+  if (err && err.kind === 'network') msg += ' Check that you’re online, then try again. If Snagr is open inside an app preview, open it from its web link instead.';
+  return `<div class="note err" role="alert"><p>${esc(msg)}</p><button class="btn small" type="button" data-act="${act}">Try again</button></div>`;
 }
 function chips(G) {
   return `<div class="chips" aria-label="Popular searches">${G.suggest.map(s => `<button class="chip" type="button" data-act="suggest" data-q="${esc(s)}">${esc(s)}</button>`).join('')}</div>`;
 }
-let toastTimer = null;
-function toast(msg) {
-  const t = $('#toast');
-  t.textContent = msg;
+let toastTimer = null, toastRun = null;
+function toast(msg, action) {
+  const t = $('#toast'), b = $('#toastAction');
+  $('#toastText').textContent = msg;
+  toastRun = action ? action.run : null;
+  b.hidden = !action;
+  if (action) b.textContent = action.label;
   t.hidden = false;
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { t.hidden = true; }, 2800);
+  toastTimer = setTimeout(() => { t.hidden = true; toastRun = null; }, action ? 5000 : 2600);
 }
 
 /* ------------------------------------------------------------------ header, tabs */
 function renderGames() {
-  $('#games').innerHTML = GAME_ORDER.map(id => `<button class="game" type="button" role="tab" aria-selected="${id === state.game}" data-game="${id}" style="--gc: var(--g-${id})"><span class="dot" aria-hidden="true"></span>${esc(GAMES[id].short)}</button>`).join('');
+  $('#games').innerHTML = GAME_ORDER.map(id => `<button class="game" type="button" role="tab" aria-selected="${id === state.game}" data-game="${id}">${esc(GAMES[id].short)}</button>`).join('');
 }
 function renderBadge() {
   const b = $('#watchBadge');
@@ -1169,7 +1151,7 @@ function renderBadge() {
   b.hidden = false;
   b.textContent = String(hits || n);
   b.classList.toggle('mute', !hits);
-  b.title = hits ? `${hits} target${hits > 1 ? 's' : ''} hit` : `${n} watched`;
+  b.title = hits ? `${hits} at your price` : `${n} on your wishlist`;
 }
 function setTab(tab) {
   if (!['deals', 'hunt', 'watch'].includes(tab)) tab = 'deals';
@@ -1199,7 +1181,7 @@ async function ensureRadar(force) {
   if (!G.radar) return;
   const cur = state.radar[game];
   if (!force && cur && (cur.status === 'loading' || (cur.status === 'ok' && Date.now() - cur.at < 20 * 60e3))) return;
-  state.radar[game] = { status: 'loading', started: Date.now() };
+  state.radar[game] = { status: 'loading' };
   if (state.tab === 'deals' && state.game === game) renderDeals();
   try {
     const deals = await A[game].radar();
@@ -1214,27 +1196,26 @@ function refreshRadar() {
   ensureRadar(true);
 }
 function dealRow(d, i) {
-  return `<button class="row" type="button" data-act="open-deal" data-i="${i}">${thumb(d.image, d.game, d.code)}<span class="row-main"><span class="row-name">${esc(d.name)}</span><span class="row-sub">${esc(d.where)}</span><span class="row-note">${esc(d.why)}</span></span><span class="row-price"><span class="tag">${money(d.price)}</span>${pctBadge(d.pct)}</span></button>`;
+  return `<button class="row" type="button" data-act="open-deal" data-i="${i}">${thumb(d.image, d.game, d.code)}<span class="row-main"><span class="name">${esc(d.name)}</span><span class="sub">${esc(d.where)}</span></span><span class="row-price"><span class="price">${money(d.price)}</span><span class="save">Save ${money(d.ref - d.price)}</span></span></button>`;
 }
 function renderDeals() {
   const G = GAMES[state.game], r = state.radar[state.game];
-  let body = '';
-  if (!G.radar) {
-    body = `<div class="note"><p><b>Lorcana deals need listing prices.</b> Lorcast, the free Lorcana price feed, only carries market prices, so there are no listings to compare against yet. Search a card instead to find its cheapest printing.</p>${chips(G)}</div>`;
-  } else if (!r || r.status === 'loading') {
-    body = `<p class="loading-note" role="status">${esc(G.radar.loading)}</p>${skeleton(6)}`;
-  } else if (r.status === 'error') {
-    body = errorNote(r.err, 'retry-radar');
-  } else if (!r.deals.length) {
-    body = `<div class="note"><p><b>No standout deals right now.</b> Nothing in this scan is priced well under market. Check back later, or search a specific card.</p>${chips(G)}</div>`;
+  let html = `<div class="head"><h1>${esc(G.short)} deals</h1>${G.radar ? `<button class="btn ghost small" type="button" data-act="refresh-radar"${r && r.status === 'loading' ? ' disabled' : ''}>Refresh</button>` : ''}</div>`;
+  if (G.linksOnly) {
+    html += `<div class="note"><p>No free price source covers ${esc(G.name)} yet, so Snagr can’t spot deals for it. Search a card and check it in every app with one tap.</p><button class="btn small" type="button" data-tab="hunt">Search ${esc(G.short)} cards</button></div>`;
+  } else if (!G.radar) {
+    html += `<div class="note"><p>Lorcana’s price source only has usual prices, so there are no seller listings to compare yet. Search a card to find its cheapest version.</p>${chips(G)}</div>`;
   } else {
-    body = `<p class="stamp">${r.deals.length} deals · checked ${esc(ago(r.at))} · ${esc(G.source)}</p><div class="list">${r.deals.map(dealRow).join('')}</div>`;
+    html += `<p class="hint">${esc(G.radar.hint)}</p>`;
+    if (!r || r.status === 'loading') html += loadingBlock(G.radar.loading, 5);
+    else if (r.status === 'error') html += errorNote(r.err, 'retry-radar');
+    else if (!r.deals.length) html += `<div class="note"><p>No standout deals right now. Nothing in this scan is priced well below usual. Check back later, or search for a card.</p></div>`;
+    else html += `<div class="list">${r.deals.map(dealRow).join('')}</div><p class="fine">Checked ${esc(ago(r.at))}. ${esc(G.fine)}</p>`;
   }
-  const busy = r && r.status === 'loading';
-  $('#view-deals').innerHTML = `<div class="sec-head"><div><h1 class="sec-title">${esc(G.short)} deals</h1><p class="sec-hint">${esc(G.radar ? G.radar.hint : 'Search any Lorcana card to compare every printing.')}</p></div>${G.radar ? `<button class="btn btn-ghost" type="button" data-act="refresh-radar"${busy ? ' disabled' : ''}>Refresh</button>` : ''}</div>${body}<p class="fine">${esc(G.fine)}</p>`;
+  $('#view-deals').innerHTML = html;
 }
 
-/* ------------------------------------------------------------------ hunt */
+/* ------------------------------------------------------------------ search */
 function queueSearch(q, delay) {
   clearTimeout(searchTimer);
   searchTimer = setTimeout(() => runSearch(q), delay);
@@ -1242,9 +1223,10 @@ function queueSearch(q, delay) {
 async function runSearch(raw) {
   const q = String(raw || '').trim();
   state.q = q;
+  $('#clearQ').hidden = !$('#q').value;
   if (searchCtl) searchCtl.abort();
-  if (q.length < 2) { state.hunt = { status: 'idle', groups: [] }; renderHunt(); return; }
   const game = state.game;
+  if (q.length < 2 || GAMES[game].linksOnly) { state.hunt = { status: 'idle', groups: [] }; renderHunt(); return; }
   const ctl = searchCtl = new AbortController();
   state.hunt = { status: 'loading', groups: [], q, game };
   renderHunt();
@@ -1261,22 +1243,24 @@ async function runSearch(raw) {
 }
 function groupRow(g, i) {
   const f = g.from || {};
-  return `<button class="row" type="button" data-act="open-group" data-i="${i}">${thumb(g.image, g.game, g.code)}<span class="row-main"><span class="row-name">${esc(g.name)}</span><span class="row-sub">${esc(g.sub || '')}</span>${f.note ? `<span class="row-note">${esc(f.note)}</span>` : ''}</span><span class="row-price">${f.price != null ? `<span class="tag"><small>from</small>${money(f.price)}</span>` : '<span class="tag mute">No price</span>'}${g.deal ? pctBadge(g.deal.pct) : ''}</span></button>`;
+  return `<button class="row" type="button" data-act="open-group" data-i="${i}">${thumb(g.image, g.game, g.code)}<span class="row-main"><span class="name">${esc(g.name)}</span><span class="sub">${esc(g.sub || '')}</span></span><span class="row-price">${f.price != null ? `<span class="price"><small>from</small>${money(f.price)}</span>` : '<span class="muted">No price</span>'}${f.save ? `<span class="save">Save ${money(f.save)}</span>` : ''}</span></button>`;
 }
 function renderHunt() {
   const G = GAMES[state.game], h = state.hunt;
   $('#q').placeholder = `Search ${G.short} cards`;
   let body;
   if (!state.q || state.q.length < 2) {
-    body = `${chips(G)}<div class="how"><h2>How hunting works</h2><ol><li>Search a card to see every printing and what each store charges.</li><li>The yellow tag is the cheapest way to buy it. Green and orange stickers mark prices under market.</li><li>Tap the star on a version, set the price you’d pay, and track it in Watchlist.</li></ol></div><p class="fine">${esc(G.fine)}</p>`;
+    body = `<p class="label">Popular searches</p>${chips(G)}${G.linksOnly ? `<p class="fine">Snagr doesn’t have live ${esc(G.short)} prices. Search a card and it opens in every app with one tap.</p>` : `<p class="fine">Part of a name works too, like “char” or “luffy”.</p>`}`;
+  } else if (G.linksOnly) {
+    body = `<p class="label">Check “${esc(state.q)}” in</p>${appsGrid(appLinks(state.game, state.q))}`;
   } else if (h.status === 'loading') {
-    body = `<p class="loading-note" role="status">Looking up “${esc(state.q)}” on ${esc(G.source)}…</p>${skeleton(5)}`;
+    body = loadingBlock(`Looking for “${state.q}”…`, 4);
   } else if (h.status === 'error') {
     body = errorNote(h.err, 'retry-search');
   } else if (!h.groups.length) {
-    body = `<div class="note"><p><b>No ${esc(G.short)} cards match “${esc(state.q)}”.</b> Check the spelling, try fewer words, or switch games above.</p></div>`;
+    body = `<div class="note"><p>No ${esc(G.short)} cards match “${esc(state.q)}”. Check the spelling, try fewer words, or pick another game at the top.</p></div><p class="label">Or check “${esc(state.q)}” in</p>${appsGrid(appLinks(state.game, state.q))}`;
   } else {
-    body = `<p class="stamp">${h.groups.length} result${h.groups.length > 1 ? 's' : ''} · ${esc(G.source)}</p><div class="list">${h.groups.map(groupRow).join('')}</div><p class="fine">${esc(G.fine)}</p>`;
+    body = `<div class="list">${h.groups.map(groupRow).join('')}</div><p class="fine">${esc(G.fine)}</p>`;
   }
   $('#huntBody').innerHTML = body;
 }
@@ -1305,7 +1289,7 @@ async function openGroup(g, focusId) {
   sheetAbort.abort();
   sheetAbort = new AbortController();
   const sig = sheetAbort.signal;
-  detail = { group: g, focusId: focusId || null, sort: 'price', showAll: false, editing: null, status: g.printings ? 'ok' : 'loading', retry: () => openGroup(g, focusId) };
+  detail = { group: g, focusId: focusId || null, showAll: false, editing: null, status: g.printings ? 'ok' : 'loading', retry: () => openGroup(g, focusId) };
   openSheet();
   $('.sheet-panel').scrollTop = 0;
   renderDetail();
@@ -1330,16 +1314,16 @@ async function openFromWatch(wid) {
   sheetAbort = new AbortController();
   const sig = sheetAbort.signal;
   const stub = { game: w.game, name: w.name, printings: null, sub: GAMES[w.game].name, image: w.image, code: w.code };
-  detail = { group: stub, focusId: w.pid.startsWith('store:') ? null : w.pid, sort: 'price', showAll: false, editing: null, status: 'loading', retry: () => openFromWatch(wid) };
+  detail = { group: stub, focusId: w.pid.startsWith('store:') ? null : w.pid, showAll: false, editing: null, status: 'loading', retry: () => openFromWatch(wid) };
   openSheet();
   renderDetail();
   try {
-    const q = w.game === 'lorcana' ? ((w.extra && w.extra.q) || w.name) : w.name;
+    const q = (w.extra && w.extra.q) || w.name;
     const groups = await A[w.game].search(q, sig);
     const g = groups.find(x => x.printings && x.printings.some(p => p.id === w.pid))
       || groups.find(x => w.extra && w.extra.cardId && x.cardId === w.extra.cardId)
       || groups.find(x => norm(x.name) === norm(w.name)) || null;
-    if (!g) throw new NetError('This card no longer turns up in search results.', 'http');
+    if (!g) throw new NetError('This card doesn’t show up in search results anymore.', 'http');
     if (!g.printings && A[w.game].loadPrintings) await A[w.game].loadPrintings(g, sig);
     if (!detail || sig.aborted) return;
     finishGroup(g);
@@ -1355,15 +1339,17 @@ async function openFromWatch(wid) {
 }
 function findPV(g, pid, vkey) {
   if (vkey === 'store') {
-    const v = { label: 'Lowest store price', key: 'store', offers: (g.storeOffers || []).filter(o => o.cur === 'USD') };
-    return { p: { id: pid, setName: 'Any printing', setCode: g.code || '', number: '', variants: [v], image: g.image }, v };
+    const v = { label: 'Cheapest store', key: 'store', offers: (g.storeOffers || []).filter(o => o.cur === 'USD') };
+    return { p: { id: pid, setName: 'Any version', setCode: g.code || '', number: '', variants: [v], image: g.image }, v };
   }
   const p = (g.printings || []).find(x => x.id === pid);
   const v = p && p.variants.find(x => x.key === vkey);
   return p && v ? { p, v } : null;
 }
-function holo(o) {
-  return `<section class="holo" aria-label="${esc(o.eyebrow)}"><div class="holo-top"><span class="eyebrow">${esc(o.eyebrow)}</span>${o.tier ? `<span class="pct ${o.tier.id}">${esc(o.tier.label)}</span>` : ''}</div><div class="big">${money(o.price)}</div><p class="h-l1">${esc(o.line1)}</p>${o.line2 ? `<p class="h-l2">${esc(o.line2)}</p>` : ''}${o.line3 ? `<p class="h-l3">${esc(o.line3)}</p>` : ''}${o.caution ? '<p class="h-warn">Some listings sit far below market. Those are often played or damaged copies, so check the condition and seller before you buy.</p>' : ''}${o.url ? `<a class="cta" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.cta)} <span aria-hidden="true">↗</span></a>` : ''}</section>`;
+function watchForm(wid, cur) {
+  const w = state.watch.find(x => x.id === wid);
+  const def = w ? w.target : Math.max(0.01, Math.floor((cur || 1) * 0.9 * 100) / 100);
+  return `<form class="wf" data-wid="${esc(wid)}"><label for="wt">What would you pay?</label><div class="wf-row"><span class="money-in"><span aria-hidden="true">$</span><input id="wt" name="target" type="number" inputmode="decimal" min="0.01" step="0.01" value="${def.toFixed(2)}" required></span><button class="btn" type="submit">${w ? 'Save price' : 'Add to wishlist'}</button>${w ? `<button class="btn ghost" type="button" data-act="unwatch" data-wid="${esc(wid)}">Remove</button>` : ''}<button class="btn ghost" type="button" data-act="cancel-watch">Cancel</button></div><p class="fine">It’s ${money(cur)} now. Check prices in your Wishlist to see when it drops.</p></form>`;
 }
 function bestBlock(g) {
   const ev = evalGroup(g);
@@ -1374,83 +1360,75 @@ function bestBlock(g) {
   }
   const focused = !!pick;
   if (!pick) pick = ev.cheapest;
+  let o;
   if (!focused && ev.storeBest && (!pick || ev.storeBest.price <= pick.e.best.price)) {
-    const s = ev.storeBest;
-    return holo({ eyebrow: 'Best price found', price: s.price, line1: `${s.store} · lowest listed for any printing`, line2: ev.typical ? `Typical printing: ${money(ev.typical)}` : '', url: s.url, cta: `Shop ${s.store}` });
+    const s = ev.storeBest, pid = 'store:' + g.key;
+    o = {
+      label: 'Best price', price: s.price, where: `Cheapest at ${s.store}`, ver: 'Any version of this card',
+      saving: ev.typical && ev.typical > s.price ? `The usual version costs ${money(ev.typical)}. You save ${money(ev.typical - s.price)}.` : '',
+      url: appLinks(g.game, g.name).find(l => l.name === s.store)?.url || null, cta: `Buy on ${s.store}`, pid, vkey: 'store',
+    };
+  } else if (pick) {
+    const { p, v, e } = pick, b = e.best;
+    const where = b.kind === 'ask'
+      ? (b.tag === 'Listed' ? 'Listed price on TCGplayer' : b.tag === 'Direct' ? 'Cheapest TCGplayer Direct seller' : 'Cheapest seller on TCGplayer')
+      : b.tag === 'Set price' ? 'Usual price for this version' : 'Usual price on TCGplayer';
+    let saving = '', pricey = '';
+    if (e.pct != null && e.pct >= 0.01) saving = `Usually ${money(e.market)}. You save ${money(e.market - b.price)} (${pctText(e.pct)}).`;
+    else if (e.pct != null && e.pct < -0.01) pricey = `That’s ${money(b.price - e.market)} more than the usual ${money(e.market)}.`;
+    else if (ev.typical && ev.typical > b.price * 1.05 && (g.printings || []).length > 1) saving = `The usual version costs ${money(ev.typical)}. This one saves you ${money(ev.typical - b.price)}.`;
+    const ver = plainVersion(v.label);
+    o = {
+      label: focused ? 'This deal' : 'Best price', price: b.price, where, ver: `${setLine(p)}${ver ? ', ' + ver : ''}`, saving, pricey,
+      caution: e.caution || e.outlier, url: b.url, cta: b.tag === 'Set price' ? 'Find it on TCGplayer' : 'Buy on TCGplayer', pid: p.id, vkey: v.key,
+    };
+  } else {
+    return '<div class="note"><p>No prices right now. The price source has this card but no current price for it.</p></div>';
   }
-  if (!pick) return '<div class="note"><p><b>No prices listed right now.</b> The source has this card but no current price for it.</p></div>';
-  const { p, v, e } = pick, b = e.best;
-  const kind = b.kind === 'ask' ? (b.tag === 'Listed' ? 'listed price' : b.tag === 'Direct' ? 'lowest Direct listing' : 'lowest listing') : b.tag === 'Set price' ? 'set price via YGOPRODeck' : 'market price';
-  let line3 = '';
-  if (e.pct != null) line3 = e.pct >= 0 ? `${pctText(e.pct)} under the ${money(e.market)} market price` : `${pctText(e.pct)} over the ${money(e.market)} market price`;
-  else if (ev.typical && ev.typical > b.price * 1.05 && (g.printings || []).length > 1) line3 = `Cheapest version. The typical printing runs ${money(ev.typical)}.`;
-  const setPrice = b.tag === 'Set price';
-  return holo({
-    eyebrow: focused ? 'This deal' : 'Best way to buy', price: b.price, line1: setPrice ? 'Set price via YGOPRODeck' : `${b.store} · ${kind}`,
-    line2: `${p.setName}${p.number ? ' · #' + p.number : ''} · ${v.label}`, line3, url: b.url, cta: setPrice ? 'Find it on TCGplayer' : `Open on ${b.store.replace(' Direct', '')}`,
-    tier: e.pct != null && !e.caution ? tier(e.pct) : null, caution: e.caution || e.outlier,
-  });
+  const wid = watchId(g.game, o.pid, o.vkey);
+  detail.holoWid = wid;
+  const on = isWatched(wid);
+  return `<section class="best" aria-label="${esc(o.label)}"><span class="best-label">${esc(o.label)}</span><span class="big">${money(o.price)}</span><p class="where">${esc(o.where)}</p><p class="ver">${esc(o.ver)}</p>${o.saving ? `<p class="saving">${esc(o.saving)}</p>` : ''}${o.pricey ? `<p class="pricey">${esc(o.pricey)}</p>` : ''}${o.caution ? '<p class="warn">Some listings are far below the usual price. Those are often played or damaged copies, so check the condition before you buy.</p>' : ''}<div class="actions">${o.url ? `<a class="btn" href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.cta)}</a>` : ''}<button class="btn heart" type="button" data-act="watch" data-p="${esc(o.pid)}" data-v="${esc(o.vkey)}" aria-pressed="${on}">${on ? HEART_ON : HEART}${on ? 'On your wishlist' : 'Add to wishlist'}</button></div>${detail.editing === wid ? watchForm(wid, o.price) : ''}</section>`;
 }
-function watchForm(wid, cur) {
-  const w = state.watch.find(x => x.id === wid);
-  const def = w ? w.target : Math.max(0.01, Math.floor((cur || 1) * 0.9 * 100) / 100);
-  return `<form class="wf" data-wid="${esc(wid)}"><label for="wt">Tell me when it’s at or under</label><div class="wf-row"><span class="money-in"><span aria-hidden="true">$</span><input id="wt" name="target" type="number" inputmode="decimal" min="0.01" step="0.01" value="${def.toFixed(2)}" required></span><button class="btn" type="submit">${w ? 'Update target' : 'Watch'}</button>${w ? `<button class="btn btn-ghost" type="button" data-act="unwatch" data-wid="${esc(wid)}">Remove</button>` : ''}<button class="btn btn-ghost" type="button" data-act="cancel-watch">Cancel</button></div><p class="fine">Now ${money(cur)}. Saved in this browser. Open Watchlist and tap “Check prices” to refresh.</p></form>`;
+function appsBlock(g) {
+  const known = (g.storeOffers || []).filter(o => o.price != null);
+  return `<section><h3>Check other apps</h3>${appsGrid(appLinks(g.game, g.baseName || g.name, known))}</section>`;
 }
-function offerChip(o, e) {
-  const best = e.best === o;
-  const inner = `<span class="st">${esc(o.tag)}</span><b>${money(o.price, o.cur)}</b>${o.stale ? '<span class="st">older</span>' : ''}`;
-  const cls = `offer${best ? ' best' : ''}${o.stale ? ' old' : ''}`;
-  return o.url ? `<a class="${cls}" href="${esc(o.url)}" target="_blank" rel="noopener">${inner}</a>` : `<span class="${cls}">${inner}</span>`;
-}
-function variantBlock(g, p, v) {
+function versionRow(g, p, v) {
   const e = evalVariant(v);
   const wid = watchId(g.game, p.id, v.key);
   const on = isWatched(wid);
-  const offers = v.offers.length ? v.offers.map(o => offerChip(o, e)).join('') : '<span class="muted">No price data</span>';
-  const badge = e.pct != null && !e.caution ? pctBadge(e.pct) : '';
-  return `<div class="vr"><div><div class="vr-label">${esc(v.label)}${badge}${e.outlier ? '<span class="flag">Has a suspiciously low listing</span>' : ''}</div><div class="offers">${offers}</div></div><button class="watch-btn" type="button" data-act="watch" data-p="${esc(p.id)}" data-v="${esc(v.key)}" aria-pressed="${on}" aria-label="${on ? 'Edit or remove watch' : 'Watch this version'}"${e.best && e.best.cur === 'USD' ? '' : ' disabled'}>${on ? STAR_ON : STAR}</button></div>${detail.editing === wid ? watchForm(wid, e.best ? e.best.price : null) : ''}`;
+  const ver = plainVersion(v.label);
+  const subBits = [p.number ? '#' + p.number : '', ver, p.rarity && p.rarity !== ver ? p.rarity : ''].filter(Boolean);
+  const usual = e.market && e.best && e.best.price !== e.market ? `<span class="muted">usually ${money(e.market)}</span>` : '';
+  const inner = `${thumb(p.image, g.game, p.setCode || p.number, 'sm')}<span class="row-main"><span class="name">${esc(p.setName || 'Unknown set')}</span><span class="sub">${esc(subBits.join(', '))}</span></span><span class="row-price">${e.best ? `<span class="price">${money(e.best.price)}</span>${usual}` : '<span class="muted">No price</span>'}</span>`;
+  const main = e.best && e.best.url ? `<a class="row" href="${esc(e.best.url)}" target="_blank" rel="noopener">${inner}</a>` : `<div class="row">${inner}</div>`;
+  const form = detail.editing === wid && wid !== detail.holoWid ? watchForm(wid, e.best ? e.best.price : null) : '';
+  return `<div class="vrow${p.id === detail.focusId ? ' focus' : ''}">${main}<button class="heart-icon" type="button" data-act="watch" data-p="${esc(p.id)}" data-v="${esc(v.key)}" aria-pressed="${on}" aria-label="${on ? 'Change or remove from wishlist' : 'Add this version to your wishlist'}"${e.best ? '' : ' disabled'}>${on ? HEART_ON : HEART}</button></div>${form}`;
 }
-function printingCard(g, p) {
-  const meta = [g.game === 'lorcana' ? p.setCode : p.setCode, p.number ? '#' + p.number : '', p.rarity].filter(Boolean).join(' · ');
-  const when = p.updated ? ` · prices ${shortDate(p.updated)}` : '';
-  return `<article class="pr${p.id === detail.focusId ? ' focus' : ''}"><div class="pr-head">${thumb(p.image, g.game, g.game === 'lorcana' ? (p.number ? '#' + p.number : '') : p.setCode, 'sm')}<div><div class="pr-title">${esc(p.setName || 'Unknown set')}</div><div class="pr-meta">${esc(meta + when)}</div></div></div>${p.variants.map(v => variantBlock(g, p, v)).join('')}</article>`;
-}
-function printingsBlock(g) {
-  const ps = [...(g.printings || [])];
-  if (!ps.length) return '';
-  const low = p => { const xs = p.variants.map(v => evalVariant(v).best).filter(b => b && b.cur === 'USD').map(b => b.price); return xs.length ? Math.min(...xs) : Infinity; };
-  if (detail.sort === 'price') ps.sort((a, b) => low(a) - low(b));
-  else ps.sort((a, b) => (b.released || '').localeCompare(a.released || ''));
-  if (detail.focusId) { const i = ps.findIndex(p => p.id === detail.focusId); if (i > 0) ps.unshift(ps.splice(i, 1)[0]); }
-  const limit = detail.showAll ? ps.length : 12;
-  const canSort = ps.length > 1 && ps.some(p => p.released);
-  const label = g.game === 'yugioh' ? 'printings' : 'versions';
-  return `<section class="block"><div class="block-head"><h3>${ps.length}${g.more ? '+' : ''} ${ps.length === 1 ? label.slice(0, -1) : label}</h3>${canSort ? `<div class="seg" role="group" aria-label="Sort"><button type="button" data-act="sort" data-sort="price" aria-pressed="${detail.sort === 'price'}">Cheapest</button><button type="button" data-act="sort" data-sort="new" aria-pressed="${detail.sort === 'new'}">Newest</button></div>` : ''}</div><div class="prs">${ps.slice(0, limit).map(p => printingCard(g, p)).join('')}</div>${ps.length > limit ? `<button class="btn btn-ghost wide" type="button" data-act="show-all">Show all ${ps.length}</button>` : ''}${g.partial ? `<button class="btn btn-ghost wide" type="button" data-act="all-printings">See every ${esc(g.name)} card</button>` : ''}</section>`;
-}
-function storeBlock(g) {
-  const offs = [...g.storeOffers].sort((a, b) => (a.cur === b.cur ? a.price - b.price : a.cur === 'USD' ? -1 : 1));
-  const best = offs.find(o => o.cur === 'USD');
-  const wid = watchId(g.game, 'store:' + g.key, 'store');
-  const on = isWatched(wid);
-  return `<section class="block"><div class="block-head"><h3>Store prices</h3><button class="watch-btn" type="button" data-act="watch" data-p="store:${esc(g.key)}" data-v="store" aria-pressed="${on}" aria-label="${on ? 'Edit or remove watch' : 'Watch the lowest store price'}"${best ? '' : ' disabled'}>${on ? STAR_ON : STAR}</button></div><p class="fine">The lowest price each store lists for any printing of this card.</p><div class="stores">${offs.map(o => `<a class="store${o === best ? ' best' : ''}" href="${esc(o.url)}" target="_blank" rel="noopener"><span>${esc(o.store)}</span><b>${money(o.price, o.cur)}</b></a>`).join('')}</div>${detail.editing === wid ? watchForm(wid, best ? best.price : null) : ''}</section>`;
+function versionsBlock(g) {
+  const rows = [];
+  for (const p of g.printings || []) for (const v of p.variants) rows.push({ p, v, price: (evalVariant(v).best || {}).price ?? Infinity });
+  if (!rows.length) return '';
+  rows.sort((a, b) => a.price - b.price);
+  if (detail.focusId) rows.sort((a, b) => (b.p.id === detail.focusId) - (a.p.id === detail.focusId));
+  const limit = detail.showAll ? rows.length : 10;
+  const title = rows.length === 1 ? 'This version' : `All versions (${rows.length}${g.more ? '+' : ''})`;
+  return `<section class="versions"><h3>${title}</h3><div class="list">${rows.slice(0, limit).map(r => versionRow(g, r.p, r.v)).join('')}</div>${rows.length > limit ? `<p><button class="textlink" type="button" data-act="show-all">Show all ${rows.length}</button></p>` : ''}${g.partial ? `<p><button class="textlink" type="button" data-act="all-printings">See every ${esc(g.name)} card</button></p>` : ''}</section>`;
 }
 function renderDetail() {
   if (!detail) return;
   const g = detail.group, G = GAMES[g.game];
-  $('#sheetEyebrow').textContent = G.name;
+  detail.holoWid = null;
   $('#sheetTitle').textContent = g.name;
   const fp = detail.focusId ? (g.printings || []).find(p => p.id === detail.focusId) : null;
   const big = (fp && (fp.imageLarge || fp.image)) || g.imageLarge || g.image;
   const heroCode = fp ? (g.game === 'yugioh' ? fp.setCode.split('-')[0] : fp.setCode) : g.code;
-  let html = `<div class="d-hero">${thumb(big, g.game, heroCode, 'lg')}<div><h2 class="d-name">${esc(g.name)}</h2><p class="d-sub">${esc(g.sub || G.name)}</p>${g.link ? `<a class="link" href="${esc(g.link)}" target="_blank" rel="noopener">Card details ↗</a>` : ''}</div></div>`;
-  if (detail.status === 'loading') html += `<p class="loading-note" role="status">Loading every version…</p>${skeleton(3)}`;
+  let html = `<div class="d-hero">${thumb(big, g.game, heroCode, 'lg')}<div><h2 class="d-name">${esc(g.name)}</h2><p class="d-sub">${esc(g.sub || G.name)}</p>${g.link ? `<a class="textlink" href="${esc(g.link)}" target="_blank" rel="noopener">Card details</a>` : ''}</div></div>`;
+  if (detail.status === 'loading') html += loadingBlock('Getting every version…', 3);
   else if (detail.status === 'error') html += errorNote(detail.err, 'retry-detail');
-  else {
-    html += bestBlock(g);
-    if (g.storeOffers && g.storeOffers.length) html += storeBlock(g);
-    html += printingsBlock(g);
-  }
-  html += `<p class="fine">${esc(G.fine)}</p>`;
+  else html += bestBlock(g) + appsBlock(g) + versionsBlock(g);
+  html += `<p class="fine">${esc(G.fine || '')}</p>`;
   $('#sheetBody').innerHTML = html;
 }
 function toggleWatchForm(pid, vkey) {
@@ -1469,7 +1447,7 @@ function saveWatchForm(f) {
   if (!detail) return;
   const wid = f.dataset.wid;
   const target = Math.round(parseFloat(f.elements.target.value) * 100) / 100;
-  if (!(target > 0)) { toast('Enter a target price above $0.'); return; }
+  if (!(target > 0)) { toast('Enter a price above $0.'); return; }
   const [game, pid, vkey] = splitWid(wid);
   const g = detail.group;
   const pv = findPV(g, pid, vkey);
@@ -1478,27 +1456,28 @@ function saveWatchForm(f) {
   const existing = state.watch.find(w => w.id === wid);
   if (existing) existing.target = target;
   else {
+    const ver = plainVersion(pv.v.label);
     state.watch.unshift({
       id: wid, game, pid, vkey, name: g.name,
-      where: `${pv.p.setName}${pv.p.number ? ' · #' + pv.p.number : ''} · ${pv.v.label}`,
+      where: `${setLine(pv.p)}${ver ? ', ' + ver : ''}`,
       image: pv.p.image || g.image || null, code: pv.p.setCode || g.code || '', target,
       start: e.best ? e.best.price : null, last: e.best ? e.best.price : null, lastAt: Date.now(), url: e.best ? e.best.url : null,
-      extra: game === 'yugioh' ? { cardId: g.cardId } : game === 'lorcana' ? { q: g.baseName || g.name } : null,
+      extra: game === 'yugioh' ? { cardId: g.cardId } : (game === 'lorcana' || game === 'swu') ? { q: g.baseName || g.name } : null,
     });
   }
   saveWatch();
   detail.editing = null;
   renderDetail();
-  toast(existing ? 'Target updated' : `Watching ${g.name}`);
+  toast(existing ? 'Price saved' : 'Added to wishlist');
 }
 
-/* ------------------------------------------------------------------ watchlist */
+/* ------------------------------------------------------------------ wishlist */
 async function checkWatch() {
   if (state.checking || !state.watch.length) return;
   state.checking = true;
   renderWatch();
   const byGame = {};
-  for (const w of state.watch) (byGame[w.game] = byGame[w.game] || []).push(w);
+  for (const w of state.watch) if (A[w.game]) (byGame[w.game] = byGame[w.game] || []).push(w);
   for (const [game, items] of Object.entries(byGame)) {
     let res = null;
     try { res = await A[game].refresh(items); } catch { res = null; }
@@ -1515,69 +1494,62 @@ async function checkWatch() {
   if (state.tab === 'watch') renderWatch();
   const hits = state.watch.filter(isHit).length;
   const failed = state.watch.filter(w => w.err).length;
-  toast(hits ? `${hits} target${hits > 1 ? 's' : ''} hit` : failed ? `Checked. ${failed} card${failed > 1 ? 's' : ''} couldn’t be refreshed.` : 'Checked. No targets hit yet.');
+  toast(hits ? `${hits} card${hits > 1 ? 's are' : ' is'} at your price` : failed ? `Prices checked. ${failed} card${failed > 1 ? 's' : ''} couldn’t be checked.` : 'Prices checked. Nothing at your price yet.');
 }
-function watchRow(w, i) {
+function watchRow(w) {
   const hit = isHit(w);
   const d = w.last != null && w.start != null ? w.last - w.start : null;
-  const change = d && Math.abs(d) >= 0.01 ? ` · <span class="${d < 0 ? 'down' : 'up'}">${d < 0 ? '▼' : '▲'} ${money(Math.abs(d))}</span> since added` : '';
-  let extra;
-  if (state.wEdit === w.id) {
-    extra = `<form class="wedit" data-wid="${esc(w.id)}"><label for="we${i}">New target</label><div class="wf-row"><span class="money-in"><span aria-hidden="true">$</span><input id="we${i}" name="target" type="number" inputmode="decimal" min="0.01" step="0.01" value="${Number(w.target).toFixed(2)}" required></span><button class="btn" type="submit">Save</button><button class="btn btn-ghost" type="button" data-act="w-cancel">Cancel</button></div></form>`;
-  } else if (state.wRemove === w.id) {
-    extra = `<div class="wf-row"><span>Remove this card?</span><button class="btn" type="button" data-act="w-remove-yes" data-wid="${esc(w.id)}">Remove</button><button class="btn btn-ghost" type="button" data-act="w-cancel">Keep</button></div>`;
-  } else {
-    extra = `<div class="wactions"><button class="link" type="button" data-act="w-open" data-wid="${esc(w.id)}">Open</button><button class="link" type="button" data-act="w-edit" data-wid="${esc(w.id)}">Edit target</button><button class="link" type="button" data-act="w-remove" data-wid="${esc(w.id)}">Remove</button>${w.url ? `<a class="link" href="${esc(w.url)}" target="_blank" rel="noopener">Shop ↗</a>` : ''}</div>`;
-  }
-  return `<div class="wrow${hit ? ' hit' : ''}">${thumb(w.image, w.game, w.code)}<div class="row-main"><span class="row-name">${esc(w.name)}</span><span class="row-sub">${esc(GAMES[w.game] ? GAMES[w.game].short : '')} · ${esc(w.where)}</span><span class="row-note">Target ${money(w.target)}${change}${w.err ? ' · last check failed' : ''}</span></div><div class="row-price">${w.last != null ? `<span class="tag">${money(w.last)}</span>` : '<span class="tag mute">—</span>'}${hit ? '<span class="pct steal">Target hit</span>' : ''}</div><div class="wrow-extra">${extra}</div></div>`;
+  const change = d && Math.abs(d) >= 0.01 ? `${d < 0 ? 'Down' : 'Up'} ${money(Math.abs(d))} since you added it` : '';
+  const status = hit ? '<span class="hit-pill">At your price</span>' : `<span class="muted">Your price ${money(w.target)}</span>`;
+  const sub = [w.where, change, w.err ? 'Last check didn’t work' : ''].filter(Boolean).join('. ');
+  return `<div class="wrow"><button class="row" type="button" data-act="w-open" data-wid="${esc(w.id)}">${thumb(w.image, w.game, w.code)}<span class="row-main"><span class="name">${esc(w.name)}</span><span class="sub">${esc(sub)}</span></span><span class="row-price"><span class="price">${money(w.last)}</span>${status}</span></button><button class="x-btn" type="button" data-act="w-remove" data-wid="${esc(w.id)}" aria-label="Remove ${esc(w.name)} from wishlist">${X_ICON}</button></div>`;
 }
 function renderWatch() {
   const items = state.watch.map((w, i) => [w, i]).sort((a, b) => (isHit(b[0]) - isHit(a[0])) || a[1] - b[1]).map(x => x[0]);
   const last = store.get('lastCheck', null);
-  let html = `<div class="sec-head"><div><h1 class="sec-title">Watchlist</h1><p class="sec-hint">Target prices you set on specific versions. Cards at or under target float to the top.</p></div>${items.length ? `<button class="btn" type="button" data-act="check"${state.checking ? ' disabled' : ''}>${state.checking ? 'Checking…' : 'Check prices'}</button>` : ''}</div>`;
+  let html = `<div class="head"><h1>Wishlist</h1>${items.length ? `<button class="btn small" type="button" data-act="check"${state.checking ? ' disabled' : ''}>${state.checking ? 'Checking…' : 'Check prices'}</button>` : ''}</div>`;
   if (!items.length) {
-    html += '<div class="note"><p><b>Nothing watched yet.</b> Open any card, tap the star next to the version you want, and set the price you’d pay.</p><button class="btn btn-ghost" type="button" data-tab="hunt">Find a card</button></div>';
+    html += `<p class="hint">Cards you’re waiting on, with the price you’d pay.</p><div class="note"><p>Your wishlist is empty. Open any card, tap Add to wishlist and set the price you’d pay.</p><button class="btn small" type="button" data-tab="hunt">Find a card</button></div>`;
   } else {
-    if (last) html += `<p class="stamp">Last checked ${esc(ago(last))} · saved in this browser</p>`;
-    html += `<div class="list">${items.map(watchRow).join('')}</div>`;
+    html += `<p class="hint">${last ? `Checked ${esc(ago(last))}. ` : ''}Cards at your price show first. Saved on this phone.</p><div class="list">${items.map(watchRow).join('')}</div>`;
   }
   $('#view-watch').innerHTML = html;
 }
 
-/* ------------------------------------------------------------------ info */
+/* ------------------------------------------------------------------ help */
 function openInfo() {
   sheetAbort.abort();
   sheetAbort = new AbortController();
   detail = null;
   openSheet();
-  $('#sheetEyebrow').textContent = 'Snagr';
-  $('#sheetTitle').textContent = 'How it works';
+  $('#sheetTitle').textContent = 'How Snagr works';
   $('#sheetBody').innerHTML = `<section class="info">
-    <h3>What counts as a deal</h3>
-    <dl>
-      <dt>Pokémon and One Piece</dt><dd>A TCGplayer listing priced under the card’s market price, which tracks what it has recently sold for.</dd>
-      <dt>Magic, Yu-Gi-Oh! and Lorcana</dt><dd>The cheapest printing of a card compared with its typical printing. These feeds carry market prices rather than single listings.</dd>
-    </dl>
+    <h3>Deals</h3>
+    <p>For Pokémon, One Piece and Star Wars: Unlimited, a deal is a seller on TCGplayer asking less than the card’s usual price. For Magic and Yu-Gi-Oh!, it’s a version of a card that costs much less than the usual version.</p>
+    <h3>Check other apps</h3>
+    <p>Every card has buttons that open the same search on TCGplayer, eBay, Mercari, Whatnot, Facebook Marketplace, Amazon and more. Riftbound, Digimon, Flesh and Blood, Dragon Ball and Gundam work this way only, because no free price source covers them yet.</p>
     <h3>Where prices come from</h3>
     <ul>
-      <li><a href="https://pokemontcg.io" target="_blank" rel="noopener">Pokémon TCG API</a>: TCGplayer low, market and Direct prices, plus Cardmarket in euros.</li>
-      <li><a href="https://scryfall.com" target="_blank" rel="noopener">Scryfall</a>: TCGplayer market (USD) and Cardmarket trend (EUR) for Magic, updated daily.</li>
-      <li><a href="https://ygoprodeck.com" target="_blank" rel="noopener">YGOPRODeck</a>: TCGplayer, CoolStuffInc, Amazon, eBay and Cardmarket prices for Yu-Gi-Oh!</li>
-      <li><a href="https://optcgapi.com" target="_blank" rel="noopener">OPTCG API</a>: TCGplayer market and listed prices for One Piece, refreshed daily.</li>
-      <li><a href="https://lorcast.com" target="_blank" rel="noopener">Lorcast</a>: TCGplayer market prices for Lorcana.</li>
+      <li><a href="https://pokemontcg.io" target="_blank" rel="noopener">Pokémon TCG API</a></li>
+      <li><a href="https://scryfall.com" target="_blank" rel="noopener">Scryfall</a> for Magic</li>
+      <li><a href="https://ygoprodeck.com" target="_blank" rel="noopener">YGOPRODeck</a> for Yu-Gi-Oh!</li>
+      <li><a href="https://optcgapi.com" target="_blank" rel="noopener">OPTCG API</a> for One Piece</li>
+      <li><a href="https://lorcast.com" target="_blank" rel="noopener">Lorcast</a> for Lorcana</li>
+      <li><a href="https://www.swu-db.com" target="_blank" rel="noopener">SWU-DB</a> for Star Wars: Unlimited</li>
     </ul>
     <h3>Before you buy</h3>
-    <p>The lowest listing can be a played or damaged copy, another language, or a seller with high shipping. Check the condition and the total with shipping on the store page.</p>
-    <h3>Your watchlist</h3>
-    <p>It lives in this browser on this device and isn’t uploaded anywhere. Clearing your browser data removes it.</p>
-    <h3>Put it on your home screen</h3>
-    <p>Open this page in Safari or Chrome, tap Share (or the ⋮ menu), then Add to Home Screen. It opens like an app.</p>
-    <p class="fine">Not affiliated with The Pokémon Company, Wizards of the Coast, Konami, Bandai or Disney. Card names and images belong to their owners.</p>
+    <p>The cheapest seller can have a played copy, another language or high shipping. Check the condition and the total on the store page.</p>
+    <h3>Your wishlist</h3>
+    <p>It’s saved in this browser on this phone and isn’t uploaded anywhere.</p>
+    <h3>Add Snagr to your home screen</h3>
+    <p>Open this page in Safari or Chrome, tap Share (or ⋮), then Add to Home Screen.</p>
+    <p class="fine">Snagr isn’t affiliated with any card game publisher or store. Card names and pictures belong to their owners.</p>
   </section>`;
 }
 
 /* ------------------------------------------------------------------ events */
 document.addEventListener('click', ev => {
+  if (ev.target.closest('#toastAction')) { const run = toastRun; $('#toast').hidden = true; toastRun = null; if (run) run(); return; }
   const t = ev.target.closest('[data-act],[data-game],[data-tab],[data-close]');
   if (!t) return;
   if (t.dataset.game) { setGame(t.dataset.game); return; }
@@ -1591,41 +1563,26 @@ document.addEventListener('click', ev => {
     case 'retry-radar': ensureRadar(true); break;
     case 'retry-search': runSearch(state.q); break;
     case 'retry-detail': if (detail && detail.retry) detail.retry(); break;
+    case 'clear-search': $('#q').value = ''; runSearch(''); $('#q').focus(); break;
     case 'suggest': if (!$('#sheet').hidden) closeSheet(); $('#q').value = t.dataset.q; setTab('hunt'); runSearch(t.dataset.q); break;
     case 'open-deal': { const d = deals && deals[+t.dataset.i]; if (d && d.group) openGroup(d.group, d.focus); break; }
     case 'open-group': { const g = state.hunt.groups[+t.dataset.i]; if (g) openGroup(g); break; }
-    case 'sort': if (detail) { detail.sort = t.dataset.sort; renderDetail(); } break;
     case 'show-all': if (detail) { detail.showAll = true; renderDetail(); } break;
-    case 'all-printings': { const name = detail && detail.group.name; closeSheet(); setTab('hunt'); $('#q').value = name || ''; runSearch(name || ''); break; }
+    case 'all-printings': { const name = detail && (detail.group.baseName || detail.group.name); closeSheet(); setTab('hunt'); $('#q').value = name || ''; runSearch(name || ''); break; }
     case 'watch': toggleWatchForm(t.dataset.p, t.dataset.v); break;
     case 'cancel-watch': if (detail) { detail.editing = null; renderDetail(); } break;
-    case 'unwatch': removeWatch(t.dataset.wid); if (detail) { detail.editing = null; renderDetail(); } break;
+    case 'unwatch': removeWatch(t.dataset.wid, false); if (detail) { detail.editing = null; renderDetail(); } break;
     case 'check': checkWatch(); break;
     case 'w-open': openFromWatch(t.dataset.wid); break;
-    case 'w-edit': state.wEdit = t.dataset.wid; state.wRemove = null; renderWatch(); requestAnimationFrame(() => { const i = document.querySelector('.wedit input'); if (i) { i.focus(); i.select(); } }); break;
-    case 'w-remove': state.wRemove = t.dataset.wid; state.wEdit = null; renderWatch(); break;
-    case 'w-remove-yes': removeWatch(t.dataset.wid); state.wRemove = null; renderWatch(); break;
-    case 'w-cancel': state.wEdit = null; state.wRemove = null; renderWatch(); break;
+    case 'w-remove': removeWatch(t.dataset.wid, true); break;
   }
 });
 document.addEventListener('submit', ev => {
   const f = ev.target;
   if (f.id === 'searchForm') { ev.preventDefault(); clearTimeout(searchTimer); runSearch($('#q').value); $('#q').blur(); return; }
-  if (f.classList.contains('wf')) { ev.preventDefault(); saveWatchForm(f); return; }
-  if (f.classList.contains('wedit')) {
-    ev.preventDefault();
-    const w = state.watch.find(x => x.id === f.dataset.wid);
-    const target = Math.round(parseFloat(f.elements.target.value) * 100) / 100;
-    if (!w) return;
-    if (!(target > 0)) { toast('Enter a target price above $0.'); return; }
-    w.target = target;
-    state.wEdit = null;
-    saveWatch();
-    renderWatch();
-    toast('Target updated');
-  }
+  if (f.classList.contains('wf')) { ev.preventDefault(); saveWatchForm(f); }
 });
-$('#q').addEventListener('input', ev => queueSearch(ev.target.value, 450));
+$('#q').addEventListener('input', ev => { $('#clearQ').hidden = !ev.target.value; queueSearch(ev.target.value, 450); });
 document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !$('#sheet').hidden) closeSheet(); });
 
 /* ------------------------------------------------------------------ start */
